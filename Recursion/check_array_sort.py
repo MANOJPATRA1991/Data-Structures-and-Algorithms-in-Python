@@ -1,3 +1,4 @@
+#check if array is sorted by recursion
 #default arguments must follow non-default arguments
 def isArraySorted(n, myList=[]):
     if n == 1:
