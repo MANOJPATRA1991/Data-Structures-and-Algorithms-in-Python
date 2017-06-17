@@ -8,12 +8,9 @@ def isArraySorted(n, myList=[]):
     else:
         print(myList)
         return isArraySorted(n-1, myList[0:n-1])
-        
 
 myListe=[1,2,4,3,5]
-print(myListe[4])
-v=isArraySorted(5, myListe)
-print(v)
+
 if isArraySorted(5, myListe)==1:
     print("Array is sorted!")
 else:
