@@ -1,4 +1,4 @@
-#generate binaary strings of n-bits
+#generate binary strings of n-bits
 def binary(mylist,n):
     if n<1:
         print(mylist)
