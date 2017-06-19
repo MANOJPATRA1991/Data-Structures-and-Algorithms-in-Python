@@ -49,6 +49,7 @@ class DLL(object):
                 self.head=current.next
                 current.next.prev=None
                 current.next=None
+     
     def get_position(self, position):
         counter=1
         current=self.head
