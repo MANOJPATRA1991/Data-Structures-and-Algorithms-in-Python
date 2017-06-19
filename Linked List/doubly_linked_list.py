@@ -60,6 +60,7 @@ class DLL(object):
             current=current.next
             counter += 1
         return None
+    
 e1 = Element(1)
 e2 = Element(2)
 e3 = Element(3)
