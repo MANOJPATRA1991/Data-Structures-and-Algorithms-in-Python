@@ -1,4 +1,4 @@
-import stack
+import Stacks.stack
 
 def parChecker(symbolString):
   s=Stack()
