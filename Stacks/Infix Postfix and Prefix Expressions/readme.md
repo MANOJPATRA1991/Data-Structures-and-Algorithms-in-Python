@@ -47,7 +47,7 @@ A + B * C | + A * B C | A B C * +
     - If the token is an operator, * , /, +, or -, push it on the `opstack`. However, first remove any operators already on the `opstack` that have higher or equal precedence and append them to the output list.
 4. When the input expression has been completely processed, check the `opstack`. Any operators still on the stack can be removed and appended to the end of the output list.
 
-![example](http://interactivepython.org/runestone/static/pythonds/_images/intopost.png =432X221)
+![example](http://interactivepython.org/runestone/static/pythonds/_images/intopost.png)
 
 ## Postfix Evaluation
 1. Create an empty stack called `operandStack`.
@@ -57,5 +57,7 @@ A + B * C | + A * B C | A B C * +
     - If the token is an operator, * , /, +, or -, it will need two operands. Pop the `operandStack` twice. The first pop is the second operand and the second pop is the first operand. Perform the arithmetic operation. Push the result back on the `operandStack`.
 4. When the input expression has been completely processed, the result is on the stack. Pop the `operandStack` and return the value.
 
+Example: 7 8 + 3 2 + /
 
+![example](http://interactivepython.org/runestone/static/pythonds/_images/evalpostfix2.png)
 
