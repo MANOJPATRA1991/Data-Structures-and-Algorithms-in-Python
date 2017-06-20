@@ -7,9 +7,9 @@ def parChecker(symbolString):
   
   while index < len(symbolString) and balanced:
     symbol=symbolString[index]
-    if symbol="(":
+    if symbol == "(":
       s.push(symbol)
-     else:
+    else:
       if s.isEmpty():
         balanced=False
       else:
@@ -17,10 +17,10 @@ def parChecker(symbolString):
     
     index += 1
     
-    if balanced and s.isEmpty():
-      return True
-    else:
-      return False
+  if balanced and s.isEmpty():
+    return True
+  else:
+    return False
       
 print(parChecker('((()))'))
 print(parChecker('(()'))
