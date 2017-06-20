@@ -49,6 +49,13 @@ A + B * C | + A * B C | A B C * +
 
 ![example](http://interactivepython.org/runestone/static/pythonds/_images/intopost.png)
 
+## Postfix Evaluation
+1. Create an empty stack called `operandStack`.
+2. Convert the string to a list by using the string method `split`.
+3. Scan the token list from left to right.
+    - If the token is an operand, convert it from a string to an integer and push the value onto the `operandStack`.
+    - If the token is an operator, * , /, +, or -, it will need two operands. Pop the `operandStack` twice. The first pop is the second operand and the second pop is the first operand. Perform the arithmetic operation. Push the result back on the `operandStack`.
+4. When the input expression has been completely processed, the result is on the stack. Pop the `operandStack` and return the value.
 
 
 
