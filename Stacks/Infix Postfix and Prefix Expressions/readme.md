@@ -38,9 +38,9 @@ A + B * C | + A * B C | A B C * +
 
 ## Infix to Postfic Conversion
 
-- Create an empty stack called `opstack` for keeping operators. Create an empty list for output.
-- Convert the input infix string to a list by using the string method `split`.
-- Scan the token list from left to right.
+1 Create an empty stack called `opstack` for keeping operators. Create an empty list for output.
+2 Convert the input infix string to a list by using the string method `split`.
+3 Scan the token list from left to right.
     - If the token is an operand, append it to the end of the output list.
     - If the token is a left parenthesis, push it on the `opstack`.
     - If the token is a right parenthesis, pop the `opstack` until the corresponding left parenthesis is removed. Append each operator to the end of the output list.
