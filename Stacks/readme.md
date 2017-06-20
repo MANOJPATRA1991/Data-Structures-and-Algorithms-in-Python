@@ -1,6 +1,6 @@
 # Stack
 
-The stack abstract data type is defined by the following structure and operations. 
+The stack *abstract data type* is defined by the following structure and operations. 
 A stack is structured as an ordered collection of items where items are added to and removed from the end called the “top.” Stacks are ordered **LIFO**. 
 
 The stack operations are given below.
