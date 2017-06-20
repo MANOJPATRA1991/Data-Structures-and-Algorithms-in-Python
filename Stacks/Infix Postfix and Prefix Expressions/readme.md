@@ -47,5 +47,8 @@ A + B * C | + A * B C | A B C * +
     - If the token is an operator, * , /, +, or -, push it on the `opstack`. However, first remove any operators already on the `opstack` that have higher or equal precedence and append them to the output list.
 4. When the input expression has been completely processed, check the `opstack`. Any operators still on the stack can be removed and appended to the end of the output list.
 
+![example](http://interactivepython.org/runestone/static/pythonds/_images/intopost.png)
+
+
 
 
