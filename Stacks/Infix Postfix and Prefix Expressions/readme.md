@@ -16,12 +16,24 @@ Prefix expression notation requires that all operators precede the two operands 
 A B +
 Postfix, on the other hand, requires that its operators come after the corresponding operands. 
 
-> The order of the operands stay exactly the same relative to one another irrespective of how they are arranged.
+> The order of operations within prefix and postfix expressions is completely determined by the position of the operator and nothing else. 
 
 Infix Expression | Prefix Expression | Postfix Expression
 ---------------- | ----------------- | ------------------
 A + B | + A B | A B +
 A + B * C | + A * B C | A B C * +
+(A + B) * C | * + A B C | A B + C *
+
+# Conversion of Infix Expressions to Prefix and Postfix
+
+(A + (B * C))
+
+- Prefix
+
+![Prefix](http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png)
+
+- Postfix
+![Postfix](http://interactivepython.org/runestone/static/pythonds/_images/moveright.png)
 
 
 
