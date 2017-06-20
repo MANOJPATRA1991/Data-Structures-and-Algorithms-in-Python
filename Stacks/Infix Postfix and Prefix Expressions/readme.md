@@ -9,17 +9,17 @@ B * C
 - If two operators of equal precedence appear, then a left-to-right ordering or associativity is used.
 
 # Prefix Expressions
-+AB
++ A B
 Prefix expression notation requires that all operators precede the two operands that they work on. 
 
 # Postfix Expression
-AB+
+A B +
 Postfix, on the other hand, requires that its operators come after the corresponding operands. 
 
 > The order of the operands stay exactly the same relative to one another irrespective of how they are arranged.
 
 ### Infix Expression | ### Prefix Expression | ### Postfix Expression
----------------------------------------------------------------------
+---------------------|-----------------------|-------------------------
 A + B | + A B | A B +
 A + B * C | + A * B C | A B C * +
 
