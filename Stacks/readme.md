@@ -1,7 +1,8 @@
 # Stack
 
 The stack abstract data type is defined by the following structure and operations. 
-A stack is structured, as described above, as an ordered collection of items where items are added to and removed from the end called the “top.” Stacks are ordered **LIFO**. 
+A stack is structured as an ordered collection of items where items are added to and removed from the end called the “top.” Stacks are ordered **LIFO**. 
+
 The stack operations are given below.
 
 1. `Stack()` creates a new stack that is empty. It needs no parameters and returns an empty stack.
