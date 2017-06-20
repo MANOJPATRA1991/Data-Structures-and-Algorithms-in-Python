@@ -18,8 +18,8 @@ Postfix, on the other hand, requires that its operators come after the correspon
 
 > The order of the operands stay exactly the same relative to one another irrespective of how they are arranged.
 
-### Infix Expression | ### Prefix Expression | ### Postfix Expression
----------------------|-----------------------|-------------------------
+Infix Expression | Prefix Expression | Postfix Expression
+---------------- | ----------------- | ------------------
 A + B | + A B | A B +
 A + B * C | + A * B C | A B C * +
 
