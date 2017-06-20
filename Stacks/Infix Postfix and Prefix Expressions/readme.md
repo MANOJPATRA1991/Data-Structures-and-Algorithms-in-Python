@@ -33,6 +33,7 @@ A + B * C | + A * B C | A B C * +
 ![Prefix](http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png)
 
 - Postfix
+
 ![Postfix](http://interactivepython.org/runestone/static/pythonds/_images/moveright.png)
 
 
