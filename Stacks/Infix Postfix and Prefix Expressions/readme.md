@@ -30,7 +30,7 @@ A + B * C | + A * B C | A B C * +
 
 - Prefix
 
-![Prefix](http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png)
+![Prefix](http://interactivepython.org/runestone/static/pythonds/_images/moveleft.png432X221)
 
 - Postfix
 
