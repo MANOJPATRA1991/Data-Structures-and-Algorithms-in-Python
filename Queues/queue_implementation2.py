@@ -1,3 +1,6 @@
+# assuming rear is at the end
+# in-built deque abstract data type is used here
+
 from collections import deque
 class Queue:
     def __init__(self, head=None):
