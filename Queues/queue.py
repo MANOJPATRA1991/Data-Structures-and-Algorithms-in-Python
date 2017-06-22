@@ -13,7 +13,7 @@ class Queue(object):
 
     # O(1)
     def dequeue(self):
-        self.items.pop()
+        return self.items.pop()
 
     def size(self):
         return len(self.items)
