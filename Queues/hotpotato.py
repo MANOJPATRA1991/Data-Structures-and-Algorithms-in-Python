@@ -1,4 +1,4 @@
-from Queues import queue
+from Queues.queue import Queue
 
 def hotPotato(namelist, num):
     simQueue=Queue()
