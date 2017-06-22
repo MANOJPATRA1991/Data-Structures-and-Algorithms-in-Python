@@ -5,7 +5,7 @@
 import random
 from printer import Printer
 from task import Task
-from Q.queue import Queue
+from Queue.queue import Queue
 
 
 def simulation(num_seconds, pages_per_minute, num_students):
