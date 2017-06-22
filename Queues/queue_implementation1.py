@@ -1,3 +1,4 @@
+# assuming rear is at the end
 class Queue(object):
     def __init__(self, head=None):
         self.storage = [head]
