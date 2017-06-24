@@ -24,7 +24,6 @@ class LinkedList(object):
             current.next=new_element
         else:
             self.head=new_element
-        return self;
 
     def is_empty(self):
         """Checks if the linked list is empty
@@ -77,7 +76,6 @@ class LinkedList(object):
         elif position == 1:
             new_element.next=self.head
             self.head=new_element
-        return self;
 
     def delete(self, value):
         """Search for a value in the linked list and if found,
@@ -97,7 +95,6 @@ class LinkedList(object):
                 current.next=None
             else:
                 self.head=current.next
-        return self;
 
     def size(self):
         """returns the size of the linked list
