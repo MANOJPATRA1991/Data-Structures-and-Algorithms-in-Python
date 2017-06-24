@@ -98,6 +98,9 @@ e3 = Element(3)
 e4 = Element(4)
 
 # Start setting up a LinkedList
+
+# ll here is an instance of the LikedList class that contains a single reference to only the 
+# first node in the linked list structure
 ll = LinkedList(e1)
 ll.append(e2)
 ll.append(e3)
