@@ -99,7 +99,20 @@ class LinkedList(object):
                 self.head=current.next
         return self;
 
+    def size(self):
+        """returns the size of the linked list
 
+        Returns: An integer 
+            """
+
+        current = self.head
+        count = 0
+        while current is not None:
+            count += 1
+            current = current.next
+
+        return count
+    
 e1 = Element(1)
 e2 = Element(2)
 e3 = Element(3)
@@ -113,6 +126,7 @@ ll = LinkedList(e1)
 ll.append(e2)
 ll.append(e3)
 
+print(ll.size())
 # Test get_position
 # Should print 3
 print(ll.head.next.next.value)
