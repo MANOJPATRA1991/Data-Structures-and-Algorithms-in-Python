@@ -26,6 +26,14 @@ class LinkedList(object):
             self.head=new_element
         return self;
 
+    def is_empty(self):
+        """Checks if the linked list is empty
+        
+            Returns:
+                A Boolean indicating if the list is empty or not
+        """
+        return self.head == None
+    
     def get_position(self, position):
         """Returns the element at the position specified
 
