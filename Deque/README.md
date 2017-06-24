@@ -7,10 +7,10 @@ Even though the deque can assume many of the characteristics of stacks and queue
 
 The deque operations are given below.
 
-1. Deque() creates a new deque that is empty. It needs no parameters and returns an empty deque.`
-2. addFront(item) adds a new item to the front of the deque. It needs the item and returns nothing.
-3. addRear(item) adds a new item to the rear of the deque. It needs the item and returns nothing.
-4. removeFront() removes the front item from the deque. It needs no parameters and returns the item. The deque is modified.
-5. removeRear() removes the rear item from the deque. It needs no parameters and returns the item. The deque is modified.
-6. isEmpty() tests to see whether the deque is empty. It needs no parameters and returns a boolean value.
-7. size() returns the number of items in the deque. It needs no parameters and returns an integer.
+1. `Deque()` creates a new deque that is empty. It needs no parameters and returns an empty deque.
+2. `addFront(item)` adds a new item to the front of the deque. It needs the item and returns nothing.
+3. `addRear(item)` adds a new item to the rear of the deque. It needs the item and returns nothing.
+4. `removeFront()` removes the front item from the deque. It needs no parameters and returns the item. The deque is modified.
+5. `removeRear()` removes the rear item from the deque. It needs no parameters and returns the item. The deque is modified.
+6. `isEmpty()` tests to see whether the deque is empty. It needs no parameters and returns a boolean value.
+7. `size()` returns the number of items in the deque. It needs no parameters and returns an integer.
