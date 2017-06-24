@@ -2,7 +2,7 @@
 
 To create the append() function with O(1), following implementation is required.
 
-```
+```python
 def __init__(self, head=None, last=None):
     self.head = head
     self.last = head
