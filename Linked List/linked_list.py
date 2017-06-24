@@ -95,7 +95,21 @@ class LinkedList(object):
                 current.next=None
             else:
                 self.head=current.next
+    
+    def pop(self):
+        """removes the last element from the linked list
 
+        Returns:
+            An Element instance
+        """
+        current = self.head
+        previous = None
+        while current.next:
+            previous = current
+            current = current.next
+        previous.next = None
+        return current.value
+    
     def size(self):
         """returns the size of the linked list
 
