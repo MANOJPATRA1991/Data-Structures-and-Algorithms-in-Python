@@ -13,7 +13,7 @@ def pal_checker(str):
         first = chardeque.remove_front()
         last = chardeque.remove_rear()
 
-        if first is not last:
+        if first != last:
             stillEqual = False
 
     return  stillEqual
