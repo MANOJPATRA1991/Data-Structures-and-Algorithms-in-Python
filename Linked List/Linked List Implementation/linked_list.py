@@ -127,7 +127,9 @@ class LinkedList(object):
                 previous = current
             current = current.next
         if previous is None:
-            print("No elements in list!!")
+            temp = self.head
+            self.head = None
+            return temp
         else:
             temp = previous.next
             previous.next = None
