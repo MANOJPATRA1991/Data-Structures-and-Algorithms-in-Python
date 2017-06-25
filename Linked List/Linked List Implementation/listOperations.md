@@ -29,3 +29,9 @@ The list can be ordered or unordered.
 7. `index(item)` returns the position of item in the list. It needs the item and returns the index. Assume the item is in the list.
 8. `pop()` removes and returns the last item in the list. It needs nothing and returns an item. Assume the list has at least one item.
 9. `pop(pos)` removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list.
+
+## Analysis of Linked List
+
+To analyze the complexity of the linked list operations, we need to consider whether they require traversal. Consider a linked list that has *n* nodes. The `isEmpty` method is **O(1)** since it requires one step to check the head reference for None. `size`, on the other hand, will always require *n* steps since there is no way to know how many nodes are in the linked list without traversing from head to end. Therefore, `length` is **O(n)**. *Adding an item to an unordered list in the beginning* will always be **O(1)** since we simply place the new node at the head of the linked list. However, `search` and `remove`, as well as `add` for an ordered list, all require the traversal process. Although on average they may need to traverse only half of the nodes, these methods are all **O(n)** since in the worst case each will process every node in the list.
+
+
