@@ -75,7 +75,7 @@ class LinkedList(object):
             the linked list
 
             Args:
-                new_element: An Element instane
+                new_element: An Element instance
                 position: A number specifying the position
                     at which the new element is to be inserted
         """
@@ -99,17 +99,20 @@ class LinkedList(object):
             Args:
                 value: value to delete from the linked list
         """
-        current=self.head
-        previous=None
-        while current.value != value and current.next:
-            previous=current
-            current=current.next
-        if current.value == value:
-            if previous:
-                previous.next=current.next
-                current.next=None
+        current = self.head
+        previous = None
+        found = False
+        while current and  not found:
+            if current.value == value:
+                found = True
             else:
-                self.head=current.next
+                previous = current
+                current = current.next
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
+            current.next = None
     
     def pop(self):
         """removes the last element from the linked list
@@ -119,11 +122,16 @@ class LinkedList(object):
         """
         current = self.head
         previous = None
-        while current.next:
-            previous = current
+        while current is not None:
+            if current.next:
+                previous = current
             current = current.next
-        previous.next = None
-        return current.value
+        if previous is None:
+            print("No elements in list!!")
+        else:
+            temp = previous.next
+            previous.next = None
+            return temp
     
     def size(self):
         """returns the size of the linked list
