@@ -22,7 +22,8 @@ class LinkedList(object):
             while current.next:
                 current=current.next
             current.next=new_element
-        else:
+        # if no element in linked list
+        else:   
             self.head=new_element
 
     def is_empty(self):
@@ -88,6 +89,7 @@ class LinkedList(object):
                     current.next=new_element
                 current=current.next
                 counter += 1
+        # if position is 1, make the new element as the new head of the linked list
         elif position == 1:
             new_element.next=self.head
             self.head=new_element
@@ -108,6 +110,7 @@ class LinkedList(object):
             else:
                 previous = current
                 current = current.next
+        # if value equals self.head.value, then previous will be None
         if previous is None:
             self.head = current.next
         else:
@@ -126,6 +129,7 @@ class LinkedList(object):
             if current.next:
                 previous = current
             current = current.next
+        # if only one element in the linked list
         if previous is None:
             temp = self.head
             self.head = None
@@ -140,7 +144,6 @@ class LinkedList(object):
 
         Returns: An integer 
             """
-
         current = self.head
         count = 0
         while current is not None:
