@@ -55,6 +55,21 @@ class LinkedList(object):
             counter += 1
         return None
 
+    def search(self, item):
+        """search for an item in the linked list
+        Args:
+            item: An Element instance
+        
+        Returns:
+            A Boolean"""
+        current = self.head
+        while current:
+            if current.value == item:
+                return True
+            else:
+                current = current.next
+        return False
+    
     def insert(self, new_element, position):
         """Inserts a new element at a specified position in
             the linked list
@@ -136,6 +151,10 @@ e4 = Element(4)
 ll = LinkedList(e1)
 ll.append(e2)
 ll.append(e3)
+ll.append(e4)
+
+print(ll.search(3))
+print(ll.search(7))
 
 print(ll.size())
 # Test get_position
