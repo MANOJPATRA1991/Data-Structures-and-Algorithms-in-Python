@@ -4,7 +4,7 @@ import Stacks.Infix_Postfix_and_Prefix_Expressions.postfix_evaluation as in_to_p
 
 def infix_to_postfix(infix_expr):
     # a dictionary to hold elements by precedence
-    prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
+    prec = {"^": 4, "*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
 
     op_stack = Stack()
     char_stack = Stack()
@@ -30,8 +30,8 @@ def infix_to_postfix(infix_expr):
             # and append them to the output list
             while not op_stack.isEmpty() and (prec[op_stack.peek()] >= prec[token]):
                 top_token = op_stack.pop()
-                op1 = char_stack.pop()
                 op2 = char_stack.pop()
+                op1 = char_stack.pop()
                 result = in_to_post.do_math(top_token, op1, op2)
                 char_stack.push(result)
             op_stack.push(token)
@@ -69,7 +69,7 @@ def validate(expr):
         verified_list.append(e)
         if e in "0123456789":
             continue
-        elif e == '+' or e == '-' or e == '/' or e == '*':
+        elif e == '+' or e == '-' or e == '/' or e == '*' or e == '^':
             continue
         elif e == '(' or e == ')':
             continue
