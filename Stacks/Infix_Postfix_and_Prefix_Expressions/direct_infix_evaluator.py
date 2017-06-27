@@ -1,24 +1,27 @@
 from Stacks.stack1 import Stack
-import Stacks.Balanced_Parenthesis.balanced_parenthesis
-
+import Stacks.Balanced_Parenthesis.balanced_parenthesis as parenthesis
+import Stacks.Infix_Postfix_and_Prefix_Expressions.postfix_evaluation as in_to_post
 
 def infix_to_postfix(infix_expr):
     # a dictionary to hold elements by precedence
     prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
 
     op_stack = Stack()
-    postfix_list = []
+    char_stack = Stack()
     token_list = infix_expr.split()
 
     for token in token_list:
         if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
-            postfix_list.append(token)
+            char_stack.push(token)
         elif token == "(":
             op_stack.push(token)
         elif token == ")":
             top_token = op_stack.pop()
+            op1 = char_stack.pop()
+            op2 = char_stack.pop()
+            result = in_to_post.do_math(top_token, op1, op2)
+            char_stack.push(result)
             while top_token != "(":
-                postfix_list.append(top_token)
                 top_token = op_stack.pop()
         else:
             # before pushing an operator +,-,/,* to the stack
@@ -27,16 +30,24 @@ def infix_to_postfix(infix_expr):
             # and append them to the output list
             while not op_stack.isEmpty() and \
                     (prec[op_stack.peek()] >= prec[token]):
-                postfix_list.append(op_stack.pop())
+                top_token = op_stack.pop()
+                op1 = char_stack.pop()
+                op2 = char_stack.pop()
+                result = in_to_post.do_math(top_token, op1, op2)
+                char_stack.push(result)
             op_stack.push(token)
 
     # When the input expression has been completely processed,
     # check the op_stack. Any operators still on the stack can
     # be removed and appended to the end of the output list.
     while not op_stack.isEmpty():
-        postfix_list.append(op_stack.pop())
+        top_token = op_stack.pop()
+        op1 = char_stack.pop()
+        op2 = char_stack.pop()
+        result = in_to_post.do_math(top_token, op1, op2)
+        char_stack.push(result)
 
-    return " ".join(postfix_list)
+    return char_stack.pop()
 
 
 def validate(expr):
@@ -49,7 +60,7 @@ def validate(expr):
     for e in expr:
         if e == '(' or e == ')':
             s.append(e)
-    if not Stacks.Balanced_Parenthesis.balanced_parenthesis.paren_checker(''.join(s)):
+    if not parenthesis.paren_checker(''.join(s)):
         return False
 
     # check for irrelevant values
