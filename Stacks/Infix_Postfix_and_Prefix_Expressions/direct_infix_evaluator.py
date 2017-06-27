@@ -11,25 +11,24 @@ def infix_to_postfix(infix_expr):
     token_list = infix_expr.split()
 
     for token in token_list:
-        if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
-            char_stack.push(token)
+        if token in "0123456789":
+            char_stack.push(int(token))
         elif token == "(":
             op_stack.push(token)
         elif token == ")":
             top_token = op_stack.pop()
-            op1 = char_stack.pop()
-            op2 = char_stack.pop()
-            result = in_to_post.do_math(top_token, op1, op2)
-            char_stack.push(result)
             while top_token != "(":
+                op2 = char_stack.pop()
+                op1 = char_stack.pop()
+                result = in_to_post.do_math(top_token, op1, op2)
+                char_stack.push(result)
                 top_token = op_stack.pop()
         else:
             # before pushing an operator +,-,/,* to the stack
             # we should first remove any operators already in
             # the op_stack that have higher or equal precedence
             # and append them to the output list
-            while not op_stack.isEmpty() and \
-                    (prec[op_stack.peek()] >= prec[token]):
+            while not op_stack.isEmpty() and (prec[op_stack.peek()] >= prec[token]):
                 top_token = op_stack.pop()
                 op1 = char_stack.pop()
                 op2 = char_stack.pop()
@@ -40,7 +39,7 @@ def infix_to_postfix(infix_expr):
     # When the input expression has been completely processed,
     # check the op_stack. Any operators still on the stack can
     # be removed and appended to the end of the output list.
-    while not op_stack.isEmpty():
+    while not op_stack.isEmpty() and not char_stack.isEmpty():
         top_token = op_stack.pop()
         op1 = char_stack.pop()
         op2 = char_stack.pop()
@@ -68,7 +67,7 @@ def validate(expr):
     for e in expr:
         e = e.strip()
         verified_list.append(e)
-        if e in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or "0123456789":
+        if e in "0123456789":
             continue
         elif e == '+' or e == '-' or e == '/' or e == '*':
             continue
