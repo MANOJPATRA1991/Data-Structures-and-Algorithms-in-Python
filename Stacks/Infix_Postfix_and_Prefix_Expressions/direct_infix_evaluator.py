@@ -41,8 +41,8 @@ def infix_to_postfix(infix_expr):
     # be removed and appended to the end of the output list.
     while not op_stack.isEmpty() and not char_stack.isEmpty():
         top_token = op_stack.pop()
-        op1 = char_stack.pop()
         op2 = char_stack.pop()
+        op1 = char_stack.pop()
         result = in_to_post.do_math(top_token, op1, op2)
         char_stack.push(result)
 
@@ -50,7 +50,7 @@ def infix_to_postfix(infix_expr):
 
 
 def validate(expr):
-    """this function checks whetherthe input expression is validate or not"""
+    """this function checks whether the input expression is validate or not"""
     # check for balanced parenthesis
     if not expr:
         return False
