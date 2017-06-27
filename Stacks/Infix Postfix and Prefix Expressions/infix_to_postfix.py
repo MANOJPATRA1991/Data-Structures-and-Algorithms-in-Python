@@ -1,41 +1,42 @@
 from Stacks.stack1 import Stack
-import Balanced Parenthesis
+import Stacks.Balanced_Parenthesis.balanced_parenthesis
+
 
 def infix_to_postfix(infix_expr):
     # a dictionary to hold elements by precedence
     prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
 
-    opstack = Stack()
-    postfixList = []
-    tokenList = infix_expr.split()
+    op_stack = Stack()
+    postfix_list = []
+    token_list = infix_expr.split()
 
-    for token in tokenList:
+    for token in token_list:
         if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
-            postfixList.append(token)
+            postfix_list.append(token)
         elif token == "(":
-            opstack.push(token)
+            op_stack.push(token)
         elif token == ")":
-            top_token = opstack.pop()
+            top_token = op_stack.pop()
             while top_token != "(":
-                postfixList.append(top_token)
-                top_token = opstack.pop()
+                postfix_list.append(top_token)
+                top_token = op_stack.pop()
         else:
             # before pushing an operator +,-,/,* to the stack
             # we should first remove any operators already in
-            # the opstack that have higher or equal precedence
+            # the op_stack that have higher or equal precedence
             # and append them to the output list
-            while not opstack.isEmpty() and \
-                    (prec[opstack.peek()] >= prec[token]):
-                postfixList.append(opstack.pop())
-            opstack.push(token)
+            while not op_stack.isEmpty() and \
+                    (prec[op_stack.peek()] >= prec[token]):
+                postfix_list.append(op_stack.pop())
+            op_stack.push(token)
 
     # When the input expression has been completely processed,
-    # check the opstack. Any operators still on the stack can
+    # check the op_stack. Any operators still on the stack can
     # be removed and appended to the end of the output list.
-    while not opstack.isEmpty():
-        postfixList.append(opstack.pop())
+    while not op_stack.isEmpty():
+        postfix_list.append(op_stack.pop())
 
-    return " ".join(postfixList)
+    return " ".join(postfix_list)
 
 
 def validate(expr):
@@ -48,7 +49,7 @@ def validate(expr):
     for e in expr:
         if e == '(' or e == ')':
             s.append(e)
-    if not paren_checker(''.join(s)):
+    if not Stacks.Balanced_Parenthesis.balanced_parenthesis.paren_checker(''.join(s)):
         return False
 
     # check for irrelevant values

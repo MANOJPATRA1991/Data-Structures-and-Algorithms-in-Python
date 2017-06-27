@@ -1,27 +1,28 @@
 from Stacks.stack1 import Stack
 
-def postfix_eval(postfixexpr):
-    opStack = Stack()
-    tokenList = postfixexpr.split()
 
-    for token in tokenList:
+def postfix_eval(postfixexpr):
+    op_stack = Stack()
+    token_list = postfixexpr.split()
+
+    for token in token_list:
         if token in "0123456789":
-            opStack.push(int(token))
+            op_stack.push(int(token))
         else:
-            # if opstack's size is 1 then do_math can't
+            # if op_stack's size is 1 then do_math can't
             # operate as it requires two operands
-            if opStack.size() < 2:
+            if op_stack.size() < 2:
                 return None
-            operand2 = opStack.pop()
-            operand1 = opStack.pop()
+            operand2 = op_stack.pop()
+            operand1 = op_stack.pop()
             result = do_math(token, operand1, operand2)
-            opStack.push(result)
-    # if opstack size is greater than 1
+            op_stack.push(result)
+    # if op_-stack size is greater than 1
     # then expression is missing an operator
-    if opStack.size() > 1:
+    if op_stack.size() > 1:
         return None
     else:
-        return opStack.pop()
+        return op_stack.pop()
 
 
 def do_math(op, op1, op2):
@@ -53,4 +54,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

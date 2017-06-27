@@ -1,5 +1,6 @@
 from Stacks.stack1 import Stack
 
+
 def paren_checker(symbol_string):
     s = Stack()
     balanced = True
@@ -22,5 +23,6 @@ def paren_checker(symbol_string):
     else:
         return False
 
-print(parChecker('((()))'))
-print(parChecker('(()'))
+
+print(paren_checker('((()))'))
+print(paren_checker('(()'))
