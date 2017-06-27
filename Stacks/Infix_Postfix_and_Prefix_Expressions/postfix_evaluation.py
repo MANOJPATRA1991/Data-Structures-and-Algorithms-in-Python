@@ -34,7 +34,9 @@ def do_math(op, op1, op2):
         return op1 + op2
     elif op == "-":
         return op1 - op2
-    # if operator other than -,+,*,/
+    elif op == "^":
+        return  op1 ^ op2
+    # if operator other than -,+,*,/,^
     # return None
     else:
         return None
