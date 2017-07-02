@@ -1,6 +1,7 @@
 from Stacks.stack1 import Stack
 
-def baseConverter(decNumber,base):
+
+def baseConverter(decNumber, base):
     digits = "0123456789ABCDEF"
 
     remstack = Stack()
@@ -16,5 +17,6 @@ def baseConverter(decNumber,base):
 
     return newString
 
-print(baseConverter(25,2))
-print(baseConverter(25,16))
+
+print(baseConverter(25, 2))
+print(baseConverter(25, 16))
