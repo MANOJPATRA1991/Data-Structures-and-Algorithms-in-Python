@@ -3,11 +3,13 @@ import turtle
 myTurtle = turtle.Turtle()
 myWin = turtle.Screen()
 
-def drawSpiral(myTurtle, lineLen):
-    if lineLen > 0:
-        myTurtle.forward(lineLen)
-        myTurtle.right(90)
-        drawSpiral(myTurtle,lineLen-5)
 
-drawSpiral(myTurtle,100)
+def draw_spiral(my_turtle, line_len):
+    if line_len > 0:
+        my_turtle.forward(line_len)
+        my_turtle.right(90)
+        draw_spiral(my_turtle, line_len - 5)
+
+
+draw_spiral(myTurtle, 100)
 myWin.exitonclick()

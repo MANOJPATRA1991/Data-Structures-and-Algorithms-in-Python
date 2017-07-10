@@ -19,7 +19,7 @@ def tree(branch_len, t, x):
 
 def main():
     t = turtle.Turtle()
-    myWin = turtle.Screen()
+    my_win = turtle.Screen()
     t.left(90)
     t.up()
     t.backward(100)
@@ -27,7 +27,7 @@ def main():
     t.pensize(10)
     t.color("brown")
     tree(75, t, 10)
-    myWin.exitonclick()
+    my_win.exitonclick()
 
 
 main()
