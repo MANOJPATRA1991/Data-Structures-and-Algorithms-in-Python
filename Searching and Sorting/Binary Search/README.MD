@@ -35,4 +35,9 @@ The maximum number of comparisons is logarithmic with respect to the number of i
 Therefore, the binary search is **O(log⁡n)**.
 
 
+#### Things to Consider
+
+Even though a binary search is generally better than a sequential search, it is important to note that for small values of n, the additional cost of sorting is probably not worth it. In fact, we should always consider whether it is cost effective to take on the extra work of sorting to gain searching benefits. If we can sort once and then search many times, the cost of the sort is not so significant. However, for large lists, sorting even once can be so expensive that simply performing a sequential search from the start may be the best choice.
+
+
 
