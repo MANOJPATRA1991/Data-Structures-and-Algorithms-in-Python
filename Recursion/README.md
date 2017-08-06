@@ -10,3 +10,12 @@ All recursive algorithms must obey three important laws:
   1. A recursive algorithm must have a base case.
   2. A recursive algorithm must change its state and move toward the base case.
   3. A recursive algorithm must call itself, recursively.
+
+## Key points to summarize regarding Recursion:
+
+1. All recursive algorithms must have a base case.
+2. A recursive algorithm must change its state and make progress toward the base case.
+3. A recursive algorithm must call itself (recursively).
+4. Recursion can take the place of iteration in some cases.
+5. Recursive algorithms often map very naturally to a formal expression of the problem you are trying to solve.
+6. Recursion is not always the answer. Sometimes a recursive solution may be more computationally expensive than an alternative algorithm.
