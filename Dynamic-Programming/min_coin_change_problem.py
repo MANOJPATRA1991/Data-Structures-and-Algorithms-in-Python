@@ -47,7 +47,7 @@ def ordered_sequential_search(alist, item):
         if alist[pos] == item:
             found = True
         else:
-            # check if item searched is greater than item at a particiular index
+            # check if item searched is greater than item at a particular index
             # stop if true means item searched for is not in the list
             if alist[pos] > item:
                 stop = True
