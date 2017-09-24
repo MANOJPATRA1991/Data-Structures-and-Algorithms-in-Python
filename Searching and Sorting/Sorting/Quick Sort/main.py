@@ -53,7 +53,7 @@ def median_finder(alist, first, last, mid):
         if alist[first] < alist[mid]:
             return first
         else:
-            return  mid
+            return mid
 
 
 alist = [54,26,93,17,77,31,44,55,20]
