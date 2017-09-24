@@ -52,11 +52,11 @@ def ordered_sequential_search(alist, item):
             if alist[pos] > item:
                 stop = True
             else:
-                pos = pos+1
+                pos = pos + 1
 
     return found
 
-testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
+
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42, ]
 print(ordered_sequential_search(testlist, 3))
 print(ordered_sequential_search(testlist, 13))
-
