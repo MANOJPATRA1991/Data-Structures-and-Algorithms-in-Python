@@ -21,6 +21,8 @@ class HashTable(object):
                 # there is collision
                 # linear probing needs to be done
                 next_slot = self.rehash(hash_value, len(self.slots))
+                # continue to search the next slot until we find
+                # an empty slot or a slot with the same key
                 while self.slots[next_slot] is not None and \
                                 self.slots[next_slot] != key:
                     next_slot = self.rehash(next_slot, len(self.slots))
@@ -45,7 +47,8 @@ class HashTable(object):
                 data = self.data[position]
             else:
                 position = self.rehash(position, len(self.slots))
-
+                # if cycled throught the slots and reached at the
+                # same position, stop the loop and return None
                 if position == start_slot:
                     stop = True
         return data
