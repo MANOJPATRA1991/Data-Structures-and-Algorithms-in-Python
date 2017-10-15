@@ -65,6 +65,9 @@ class Graph:
         return self.vertList.keys()
 
     def __iter__(self):
+        """
+        Return an Iterator object to iterate over all the Vertex objects in a particular graph
+        """
         return iter(self.vertList.values())
 
 # g = Graph()
