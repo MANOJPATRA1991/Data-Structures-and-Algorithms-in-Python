@@ -3,12 +3,18 @@ from Queues.queue import Queue
 
 import os
 
-
 def buildGraph(wordFile):
+    """
+    Build a Graph from the wordfile
+    Args:
+        wordFile(file): File to read
+    Returns:
+        Graph: A Graph with vertices and edges created from the word file
+    """
     d = {}
     g = Graph()
     wfile = open(wordFile, 'r')
-
+    # create bucket of words that differ by one letter
     for line in wfile:
         word = line[:-1]
         for i in range(len(word)):
@@ -17,7 +23,7 @@ def buildGraph(wordFile):
                 d[bucket].append(word)
             else:
                 d[bucket] = [word]
-
+    # add vertices and edges for words in the same bucket
     for bucket in d.keys():
         for word1 in d[bucket]:
             for word2 in d[bucket]:
@@ -33,22 +39,46 @@ def buildGraph(wordFile):
 
 
 def bfs(g, start):
+    """
+    A BFS proceeds by finding all the vertices that are a distance 'k' 
+    from the starting vertex 's' before it finds any vertices that are 
+    a distance 'k+1'
+    
+    A 'white' vertex is an undiscovered vertex.
+    
+    A 'gray' vertex has some white vertices adjacent to it, i.e., there
+    are still additional vertices to explore.
+    
+    A 'black' vertex has no white vertices adjacent to it, i.e., it is 
+    completely explored.
+    
+    Args:
+        g(Graph): Graph on which BFS is performed
+        start(Vertex): The starting vertex of the Graph
+    """
     start.setDistance(0)
     start.setPredecessor(None)
     vertQueue = Queue()
     vertQueue.enqueue(start)
-    while vertQueue.size() > 0:
-        currentVert = vertQueue.dequeue()
-        for nbr in currentVert.getConnections():
-            if nbr.getColor() == "white":
-                nbr.setColor("gray")
-                nbr.setDistance(currentVert.getDistance() + 1)
-                nbr.setPredecessor(currentVert)
-                vertQueue.enqueue(nbr)
-        currentVert.setColor("black")
-
+    # do until all the vertices in the graph 
+    # have color 'black', i.e., completely explored
+    while vertQueue.size() > 0:     # if queue is not empty
+        currentVert = vertQueue.dequeue()      # remove first element
+        for nbr in currentVert.getConnections():       # get connected vertices for  currentVert
+            if nbr.getColor() == "white":      # if unexplored
+                nbr.setColor("gray")       # set color of vertex to gray    
+                nbr.setDistance(currentVert.getDistance() + 1)      # increment distance
+                nbr.setPredecessor(currentVert)     # set predecessor to currentVert
+                vertQueue.enqueue(nbr)      # enqueue neighbor to queue
+        currentVert.setColor("black")       # set current vertex color to black as it is now completely explored
+        
 
 def traverse(y):
+    """
+    Follow the predecessor links to print the original word
+    FOOL -------------- SAGE
+    Print FOOL
+    """
     x = y
     while x.getPredecessor():
         print(x.getId())
