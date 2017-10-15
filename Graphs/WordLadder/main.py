@@ -62,16 +62,26 @@ def bfs(g, start):
     vertQueue.enqueue(start)
     # do until all the vertices in the graph 
     # have color 'black', i.e., completely explored
-    while vertQueue.size() > 0:     # if queue is not empty
+    while vertQueue.size() > 0:     # while queue is not empty
+    #
+    # while loop is executed at most once for each vertex in the Graph => O(V)
+    #
         currentVert = vertQueue.dequeue()      # remove first element
         for nbr in currentVert.getConnections():       # get connected vertices for  currentVert
+        #
+        # for loop is executed once for each edge in the Graph after a Vertex is dequeued at most once => O(E)
+        #
             if nbr.getColor() == "white":      # if unexplored
                 nbr.setColor("gray")       # set color of vertex to gray    
                 nbr.setDistance(currentVert.getDistance() + 1)      # increment distance
                 nbr.setPredecessor(currentVert)     # set predecessor to currentVert
                 vertQueue.enqueue(nbr)      # enqueue neighbor to queue
         currentVert.setColor("black")       # set current vertex color to black as it is now completely explored
-        
+    #
+    # Combining the two loops => O(V + E)
+    #
+    # Following the links from the starting node to the goal node is O(V) in worst-case if the graph was a single long chain.
+    # Normally it would be a fraction of O(V) still = O(V)
 
 def traverse(y):
     """
