@@ -4,9 +4,9 @@ class Vertex:
     Attributes:
         id(int): The id of the vertex
         connectedTo(dict): Dictionary to keep track of the vertices to which it is connected and the weight of each edge
-        distance(int):
-        color(str)
-        predecessor(Vertex)
+        distance(int): Distance from the starting vertex
+        color(str): Color of the Vertex that specifies unexplored, partially explored or completely explored
+        predecessor(Vertex): The predecessor of this Vertex
     """
     def __init__(self, key):
         self.id = key
