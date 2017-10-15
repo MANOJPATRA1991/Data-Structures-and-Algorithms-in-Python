@@ -2,7 +2,7 @@ class Vertex:
     """
     Class representing vertices of the graph
     Attributes:
-        id(string): The id of the vertex
+        id(int): The id of the vertex
         connectedTo(dict): Dictionary to keep track of the vertices to which it is connected and the weight of each edge
         distance(int):
         color(str)
@@ -42,7 +42,7 @@ class Vertex:
         """
         Returns the id of this vertex
         Returns:
-            str: id of this vertex
+            int: id of this vertex
         """
         return self.id
 
