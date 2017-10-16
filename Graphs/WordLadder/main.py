@@ -3,6 +3,7 @@ from Queues.queue import Queue
 
 import os
 
+
 def buildGraph(wordFile):
     """
     Build a Graph from the wordfile
@@ -40,18 +41,18 @@ def buildGraph(wordFile):
 
 def bfs(g, start):
     """
-    A BFS proceeds by finding all the vertices that are a distance 'k' 
-    from the starting vertex 's' before it finds any vertices that are 
+    A BFS proceeds by finding all the vertices that are a distance 'k'
+    from the starting vertex 's' before it finds any vertices that are
     a distance 'k+1'
-    
+
     A 'white' vertex is an undiscovered vertex.
-    
+
     A 'gray' vertex has some white vertices adjacent to it, i.e., there
     are still additional vertices to explore.
-    
-    A 'black' vertex has no white vertices adjacent to it, i.e., it is 
+
+    A 'black' vertex has no white vertices adjacent to it, i.e., it is
     completely explored.
-    
+
     Args:
         g(Graph): Graph on which BFS is performed
         start(Vertex): The starting vertex of the Graph
@@ -60,7 +61,7 @@ def bfs(g, start):
     start.setPredecessor(None)
     vertQueue = Queue()
     vertQueue.enqueue(start)
-    # do until all the vertices in the graph 
+    # do until all the vertices in the graph
     # have color 'black', i.e., completely explored
     while vertQueue.size() > 0:     # while queue is not empty
     #
@@ -72,7 +73,7 @@ def bfs(g, start):
         # for loop is executed once for each edge in the Graph after a Vertex is dequeued at most once => O(E)
         #
             if nbr.getColor() == "white":      # if unexplored
-                nbr.setColor("gray")       # set color of vertex to gray    
+                nbr.setColor("gray")       # set color of vertex to gray
                 nbr.setDistance(currentVert.getDistance() + 1)      # increment distance
                 nbr.setPredecessor(currentVert)     # set predecessor to currentVert
                 vertQueue.enqueue(nbr)      # enqueue neighbor to queue

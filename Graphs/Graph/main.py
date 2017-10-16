@@ -1,11 +1,13 @@
 from Graphs.Vertex.main import Vertex
 
+
 class Graph:
     """
     Attributes:
         vertList(dict): A dictionary of the vertices in the graph
         numVertices(int): Number of vertices in the graoh
     """
+
     def __init__(self):
         self.vertList = {}
         self.numVertices = 0
@@ -50,7 +52,8 @@ class Graph:
         Args:
             f(int): First key in vertList
             t(int): Second key in vertList
-            cost(int, optional): Weight of the edge that connects the two vertices
+            cost(int, optional): Weight of the edge
+                            that connects the two vertices
         """
         if f not in self.vertList:
             newVertex = self.addVertex(f)
@@ -66,7 +69,8 @@ class Graph:
 
     def __iter__(self):
         """
-        Return an Iterator object to iterate over all the Vertex objects in a particular graph
+        Return an Iterator object to iterate over all the
+        Vertex objects in a particular graph
         """
         return iter(self.vertList.values())
 

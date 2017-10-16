@@ -3,11 +3,14 @@ class Vertex:
     Class representing vertices of the graph
     Attributes:
         id(int): The id of the vertex
-        connectedTo(dict): Dictionary to keep track of the vertices to which it is connected and the weight of each edge
+        connectedTo(dict): Dictionary to keep track of the vertices
+                        to which it is connected and the weight of each edge
         distance(int): Distance from the starting vertex
-        color(str): Color of the Vertex that specifies unexplored, partially explored or completely explored
+        color(str): Color of the Vertex that specifies unexplored,
+                    partially explored or completely explored
         predecessor(Vertex): The predecessor of this Vertex
     """
+
     def __init__(self, key):
         self.id = key
         self.connectedTo = {}
@@ -20,7 +23,8 @@ class Vertex:
         Add a connection from this vertex to another
         Args:
             nbr(Vertex): The vertex to connect to
-            weight(int, optional): The weight of the edge between the two vertices 
+            weight(int, optional): The weight of the edge
+                                between the two vertices
         """
         self.connectedTo[nbr] = weight
 
@@ -28,13 +32,15 @@ class Vertex:
         """
         Returns string representation of vertices connected to this vertex
         """
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+        return str(self.id) + ' connectedTo: ' + \
+            str([x.id for x in self.connectedTo])
 
     def getConnections(self):
         """
         Returns all of the vertices in the adjacency list
         Returns:
-            list: List containing the keys of all the vertices in the adjacency list
+            list: List containing the keys of all the
+                vertices in the adjacency list
         """
         return self.connectedTo.keys()
 
@@ -48,7 +54,8 @@ class Vertex:
 
     def getWeight(self, nbr):
         """
-        Returns the weight of the edge from this vertex to the vertex passed as parameter
+        Returns the weight of the edge from this
+        vertex to the vertex passed as parameter
         Args:
             nbr(Vertex): The neighboring vertex
         Returns:
@@ -62,7 +69,7 @@ class Vertex:
     def getDistance(self):
         return self.distance
 
-    def setColor(self,color):
+    def setColor(self, color):
         self.color = color
 
     def getColor(self):
