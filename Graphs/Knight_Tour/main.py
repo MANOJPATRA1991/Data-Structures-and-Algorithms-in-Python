@@ -94,6 +94,7 @@ def knightTour(n, path, u, limit):
     path.append(u)
     if n < limit:
         nbrList = orderByAvail(u)
+        # nbrList = list(u.getConnections())
         i = 0
         done = False
         while i < len(nbrList) and not done:
