@@ -77,7 +77,6 @@ class BinHeap:
             self.perc_down(i)
             i = i - 1
 
-
 bh = BinHeap()
 bh.build_heap([9, 5, 6, 2, 3])
 

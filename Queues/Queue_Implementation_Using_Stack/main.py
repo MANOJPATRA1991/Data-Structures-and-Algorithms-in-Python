@@ -9,8 +9,8 @@ class Queue(object):
         self.input.push(item)
 
     def dequeue(self):
-        if self.output.isEmpty():
-            while(not self.input.isEmpty()):
+        if self.output.is_empty():
+            while(not self.input.is_empty()):
                 self.output.push(self.input.pop())
 
         return self.output.pop()

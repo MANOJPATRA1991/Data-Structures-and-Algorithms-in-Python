@@ -12,5 +12,5 @@ The deque operations are given below.
 3. `addRear(item)` adds a new item to the rear of the deque. It needs the item and returns nothing.
 4. `removeFront()` removes the front item from the deque. It needs no parameters and returns the item. The deque is modified.
 5. `removeRear()` removes the rear item from the deque. It needs no parameters and returns the item. The deque is modified.
-6. `isEmpty()` tests to see whether the deque is empty. It needs no parameters and returns a boolean value.
+6. `is_empty()` tests to see whether the deque is empty. It needs no parameters and returns a boolean value.
 7. `size()` returns the number of items in the deque. It needs no parameters and returns an integer.
