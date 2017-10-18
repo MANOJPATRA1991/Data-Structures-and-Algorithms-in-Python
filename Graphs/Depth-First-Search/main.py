@@ -2,7 +2,7 @@ from Graphs.Graph.main import Graph
 
 class DFSGraph(Graph):
     """
-    A derived class fro Graph base class
+    A derived class from Graph base class
     Args:
         time(int): To keep track of when a Vertex is discovered
                 and when it is completely explored

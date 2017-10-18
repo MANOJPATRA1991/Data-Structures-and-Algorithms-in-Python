@@ -1,4 +1,4 @@
-class BinHeap:
+class PriorityQueue:
     """
     HEAP ORDER PROPERTY:
     
@@ -6,9 +6,17 @@ class BinHeap:
     the key in p is smaller than or equal to the key in x.
     """
     def __init__(self):
-        # zero is the first element to make simple interger division
-        # to find index to insert node in
-        self.heap_list = [0]
+        # Dijkstra’s algorithm requires Priority Queue
+        # to store key-value pairs
+        # key --> matches the key of the Vertex in the Graph
+        # value --> "distance of the key" is used 
+        #       for deciding the priority and thus, the 
+        #       position of the key in the Priority Queue
+        # WHY DISTANCE OF THE KEY IS USED ?
+        # Because we always want to explore the vertex that 
+        # has the smallest distance
+        #
+        self.heap_list = [(0,0)]
         self.current_size = 0
 
     #
@@ -25,7 +33,7 @@ class BinHeap:
         while i // 2 > 0:
             # If item is less than its parent, 
             # then we can swap the item with its parent. 
-            if self.heap_list[i] < self.heap_list[i // 2]:
+            if self.heap_list[i][0] < self.heap_list[i // 2][0]:
                 self.heap_list[i // 2], self.heap_list[i] = \
                     self.heap_list[i], self.heap_list[i // 2]
                 i = i // 2
@@ -44,7 +52,7 @@ class BinHeap:
         """
         Delete min element
         """
-        ret_val = self.heap_list[1]
+        ret_val = self.heap_list[1][1]
         # Move the last node to make it the new root node
         self.heap_list[1] = self.heap_list[self.current_size]
         # Decrement current size by 1
@@ -74,7 +82,7 @@ class BinHeap:
             mc = self.min_child(i)
             # Swap if parent value is greater than 
             # minimum child's value
-            if self.heap_list[i] > self.heap_list[mc]:
+            if self.heap_list[i][0] > self.heap_list[mc][0]:
                 self.heap_list[i], self.heap_list[mc] = \
                     self.heap_list[mc], self.heap_list[i]
             # Make minimum child's index the next value of i
@@ -92,7 +100,7 @@ class BinHeap:
         if i * 2 + 1 > self.current_size:
             return i * 2
         else:
-            if self.heap_list[i * 2] < self.heap_list[i * 2 + 1]:
+            if self.heap_list[i * 2][0] < self.heap_list[i * 2 + 1][0]:
                 return i * 2
             else:
                 return i * 2 + 1
@@ -110,7 +118,7 @@ class BinHeap:
         # Starting with an entire list instead of a list with a single item
         # results in O(n) run time instead of O(nlogn)
         #
-        self.heap_list = [0] + alist[:]
+        self.heap_list = [(0,0)] + alist[:]
         # Starting at the middle and working our way back to the root
         i = len(alist) // 2
         self.current_size = len(alist)
@@ -118,12 +126,17 @@ class BinHeap:
             # Percolate down until all max values have moved down
             self.perc_down(i)
             i = i - 1
-
-bh = BinHeap()
-bh.build_heap([9, 5, 6, 2, 3])
-
-print(bh.del_min())
-print(bh.del_min())
-print(bh.del_min())
-print(bh.del_min())
-print(bh.del_min())
+    
+    
+    def decrease_key(self, vertex, new_dist):
+        """
+        This method is used when the distance to a vertex 
+        that is already in the queue is reduced, and thus
+        moves that vertex toward the front of the queue.
+        Args:
+            vertex(Vertex): Vertex to check
+            new_dist(int): Updated distance for the Vertex object
+        """
+        if new_dist < self.heap_list[vertex.key][1]:
+            self.heap_list[vertex.key][1] = new_dist
+            self.perc_up(self.heap_list[vertex.key])
