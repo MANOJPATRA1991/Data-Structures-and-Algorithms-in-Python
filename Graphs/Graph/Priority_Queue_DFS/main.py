@@ -33,7 +33,7 @@ class PriorityQueue:
         while i // 2 > 0:
             # If item is less than its parent, 
             # then we can swap the item with its parent. 
-            if self.heap_list[i] < self.heap_list[i // 2]:
+            if self.heap_list[i][0] < self.heap_list[i // 2][0]:
                 self.heap_list[i // 2], self.heap_list[i] = \
                     self.heap_list[i], self.heap_list[i // 2]
                 i = i // 2
@@ -52,7 +52,7 @@ class PriorityQueue:
         """
         Delete min element
         """
-        ret_val = self.heap_list[1]
+        ret_val = self.heap_list[1][1]
         # Move the last node to make it the new root node
         self.heap_list[1] = self.heap_list[self.current_size]
         # Decrement current size by 1
@@ -82,7 +82,7 @@ class PriorityQueue:
             mc = self.min_child(i)
             # Swap if parent value is greater than 
             # minimum child's value
-            if self.heap_list[i] > self.heap_list[mc]:
+            if self.heap_list[i][0] > self.heap_list[mc][0]:
                 self.heap_list[i], self.heap_list[mc] = \
                     self.heap_list[mc], self.heap_list[i]
             # Make minimum child's index the next value of i
@@ -100,7 +100,7 @@ class PriorityQueue:
         if i * 2 + 1 > self.current_size:
             return i * 2
         else:
-            if self.heap_list[i * 2] < self.heap_list[i * 2 + 1]:
+            if self.heap_list[i * 2][0] < self.heap_list[i * 2 + 1][0]:
                 return i * 2
             else:
                 return i * 2 + 1
@@ -118,7 +118,7 @@ class PriorityQueue:
         # Starting with an entire list instead of a list with a single item
         # results in O(n) run time instead of O(nlogn)
         #
-        self.heap_list = [0] + alist[:]
+        self.heap_list = [(0,0)] + alist[:]
         # Starting at the middle and working our way back to the root
         i = len(alist) // 2
         self.current_size = len(alist)
@@ -128,5 +128,15 @@ class PriorityQueue:
             i = i - 1
     
     
-    def decrease_key(self, val, amt):
-        
+    def decrease_key(self, vertex, new_dist):
+        """
+        This method is used when the distance to a vertex 
+        that is already in the queue is reduced, and thus
+        moves that vertex toward the front of the queue.
+        Args:
+            vertex(Vertex): Vertex to check
+            new_dist(int): Updated distance for the Vertex object
+        """
+        if new_dist < self.heap_list[vertex.key][1]:
+            self.heap_list[vertex.key][1] = new_dist
+            self.perc_up(self.heap_list[vertex.key])
