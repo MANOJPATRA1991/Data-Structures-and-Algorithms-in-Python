@@ -11,6 +11,11 @@ class BinHeap:
         self.heap_list = [0]
         self.current_size = 0
 
+    #
+    #   perc_up, insert are used to create a heap 
+    #   taking a single item at a time
+    #
+        
     def perc_up(self, i):
         """
         **Ensures that the smallest child is always moved up the tree**
@@ -50,6 +55,11 @@ class BinHeap:
         self.perc_down(1)
         return ret_val
 
+    #
+    #   perc_down, min_child and build_heap are used to create a heap from a 
+    #   given list of elements
+    #
+    
     def perc_down(self, i):
         """
         **Ensures that the largest child is always moved down the tree**
