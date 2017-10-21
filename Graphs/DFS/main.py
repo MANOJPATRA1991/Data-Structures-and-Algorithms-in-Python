@@ -1,5 +1,6 @@
 from Graphs.Graph.main import Graph
 
+
 class DFSGraph(Graph):
     """
     A derived class from Graph base class
@@ -7,6 +8,7 @@ class DFSGraph(Graph):
         time(int): To keep track of when a Vertex is discovered
                 and when it is completely explored
     """
+
     #
     # Run time for dfs => O(V+E)
     #
@@ -25,12 +27,14 @@ class DFSGraph(Graph):
 
         for aVertex in self:
             if aVertex.getColor() == 'white':
-                self.dfsVisit(aVertex)
+                self.dfs_visit(aVertex)
 
-    def dfsVisit(self, startVertex):
+    def dfs_visit(self, start_vertex, p=False):
         """
         Args:
-            startVertex(Vertex): The starting node for DFS
+            start_vertex(Vertex): The starting node for DFS
+            p(bool): Print value if True (used in case of
+                    finding strongly connected components)
         """
         # Run-time => O(E) for the for loop
         #
@@ -42,13 +46,18 @@ class DFSGraph(Graph):
         #     all the children of a particular node in the
         #     depth first tree have a later discovery time
         #     and an earlier finish time than their parent
-        startVertex.setColor('gray')
+        start_vertex.setColor('gray')
+        if p:
+            print(start_vertex.id)
+        start_vertex.setDiscovery(self.time)
         self.time += 1
-        startVertex.setDiscovery(self.time)
-        for v in startVertex.getConnections():
+        for v in start_vertex.getConnections():
             if v.getColor() == 'white':
-                v.setPredecessor(startVertex)
-                self.dfsVisit(v)
-        startVertex.setColor('black')
+                v.setPredecessor(start_vertex)
+                if p:
+                    self.dfs_visit(v, True)
+                else:
+                    self.dfs_visit(v)
+        start_vertex.setColor('black')
         self.time += 1
-        startVertex.setFinish(self.time)
+        start_vertex.setFinish(self.time)
