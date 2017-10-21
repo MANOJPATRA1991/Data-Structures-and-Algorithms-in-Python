@@ -1,14 +1,15 @@
-from Graphs.Graph.main import Graph
-from Graphs.Vertex.main import Vertex
-from Graphs.Graph.Priority_Queue_DFS.main import PriorityQueue
 import sys
+
+from Graphs.Graph.main import Graph
+from Graphs.Priority_Queue_DFS.main import PriorityQueue
+from Graphs.Vertex.main import Vertex
 
 
 def dijkshtra(aGraph, start):
     """
     Dijkstra’s algorithm works only when the weights are all positive.
     Args:
-        aGraph(Graph)
+        aGraph(Graph)A
         start(Vertex)
     """
     # Combined run time ~= O((E + V)log(V))
@@ -33,12 +34,12 @@ def dijkshtra(aGraph, start):
 
 g = Graph()
 
-a = Vertex(111)
-b = Vertex(112)
-c = Vertex(113)
-d = Vertex(114)
-e = Vertex(115)
-f = Vertex(116)
+a = Vertex('a')
+b = Vertex('b')
+c = Vertex('c')
+d = Vertex('d')
+e = Vertex('e')
+f = Vertex('f')
 
 g.addVertex(a.id)
 g.getVertex(a.id).setDistance(sys.maxsize)
