@@ -76,7 +76,7 @@ def legalCoordinates(x, bdSize):
 def knightTour(n, path, u, limit):
     """
     This is a recursive function.
-    The search algorithm used is Depth-First-Search(DFS).
+    The search algorithm used is DFS(DFS).
     A DFS creates a search tree by exploring one branch at a time
     ass deeply as possible.
     Args:
