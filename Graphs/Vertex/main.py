@@ -2,7 +2,7 @@ class Vertex:
     """
     Class representing vertices of the graph
     Attributes:
-        id(int): The id of the vertex
+        id(int/ string): The id of the vertex
         connectedTo(dict): Dictionary to keep track of the vertices
                         to which it is connected and the weight of each edge
         distance(int): Distance from the starting vertex used in BFS
@@ -33,7 +33,6 @@ class Vertex:
                                 between the two vertices
         """
         self.connectedTo[nbr] = weight
-
         
     def __str__(self):
         """
@@ -41,7 +40,6 @@ class Vertex:
         """
         return str(self.id) + ' connectedTo: ' + \
             str([x.id for x in self.connectedTo])
-
         
     def getConnections(self):
         """
@@ -51,7 +49,6 @@ class Vertex:
                 vertices in the adjacency list
         """
         return self.connectedTo.keys()
-
     
     def getId(self):
         """
@@ -60,7 +57,6 @@ class Vertex:
             int: id of this vertex
         """
         return self.id
-
     
     def getWeight(self, nbr):
         """
@@ -72,43 +68,33 @@ class Vertex:
             int: The weight of the edge from this vertex to nbr
         """
         return self.connectedTo[nbr]
-
     
     def setDistance(self, n):
         self.distance = n
-
     
     def getDistance(self):
         return self.distance
-
     
     def setColor(self, color):
         self.color = color
-
     
     def getColor(self):
         return self.color
-
     
     def setPredecessor(self, v):
         self.predecessor = v
 
-    
     def getPredecessor(self):
         return self.predecessor
 
-    
-    def setDisocvery(self, t):
+    def setDiscovery(self, t):
         self.discovery = t
-        
-        
-    def getDisocvery(self):
+
+    def getDiscovery(self):
         return self.discovery    
-    
-    
+
     def setFinish(self, t):
         self.finish = t
-        
         
     def getFinish(self):
         return self.finish
