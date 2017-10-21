@@ -103,9 +103,8 @@ class PriorityQueue:
             # If item is less than its parent,
             # then we can swap the item with its parent.
             if self.heap_list[i][0] < self.heap_list[i // 2][0]:
-                tmp = self.heap_list[i // 2]
-                self.heap_list[i // 2] = self.heap_list[i]
-                self.heap_list[i] = tmp
+                self.heap_list[i], self.heap_list[i // 2] = \
+                    self.heap_list[i // 2], self.heap_list[i]
             i = i // 2
 
     def insert(self, k):
