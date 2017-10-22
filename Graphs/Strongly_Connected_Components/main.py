@@ -30,7 +30,7 @@ g.dfs()
 g.transpose_graph()
 
 # STEP 3: Reverse the vertList for the graph and store it in a list
-x = reversed(sorted(g.vertList))
+x = reversed(sorted(g.vertList, key=lambda x: g.vertList[x].finish))
 
 # STEP 4: Push each element into a stack
 for v in x:
