@@ -1,4 +1,4 @@
-from Binary_search_Tress import BinarySearchTree, TreeNode
+from Trees.Binary_Search_Tree.main import BinarySearchTree, TreeNode
 
 
 class AVLTree(BinarySearchTree):
