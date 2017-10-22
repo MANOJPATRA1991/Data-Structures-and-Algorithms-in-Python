@@ -18,7 +18,7 @@ class Graph:
         """
         Add a vertex to the graph
         Args:
-            key(int): The key of the Vertex object
+            key(int/string): The key of the Vertex object
         Returns:
             Vertex: The newly added vertex
         """
@@ -52,8 +52,8 @@ class Graph:
         """
         Add edge between two vertices in the graph if they exist
         Args:
-            f(int): First key in vertList
-            t(int): Second key in vertList
+            f(int/string): First key in vertList
+            t(int/string): Second key in vertList
             cost(int, optional): Weight of the edge
                             that connects the two vertices
         """
