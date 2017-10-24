@@ -5,6 +5,7 @@ import operator
 
 def build_parse_tree(funcExp):
     """
+    An application of post-order traversal
     Build a parse tree
     Args:
         funcExp: function expression to build parse tree with
