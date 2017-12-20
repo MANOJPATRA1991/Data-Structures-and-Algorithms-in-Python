@@ -6,6 +6,8 @@ def dp_make_change(coin_value_list, change, min_coins, coins_used):
         change: Change for which we need to find the minimum number of coins
         min_coins: A list to store the minimum number of coins used for different values
         coins_used: A list to store coin used for different values
+    Returns:
+        Minimum number of coins required to make up to change
     """
     # for all values till change
     for iter_cents in range(change + 1):
