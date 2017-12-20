@@ -10,6 +10,6 @@ def short_bubble_sort(alist):
 
         pass_num = pass_num - 1
 
-alist=[20,30,40,90,50,60,70,120,100,110]
-short_bubble_sort(alist)
-print(alist)
+a_list = [20, 30, 40, 90, 50, 60, 70, 120, 100, 110]
+short_bubble_sort(a_list)
+print(a_list)

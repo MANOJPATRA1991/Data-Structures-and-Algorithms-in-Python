@@ -1,21 +1,23 @@
 def gap_insertion_sort(alist, start, gap):
     """
-    perform insertion sort on sublists of alist
+    Perform insertion sort on sub lists of alist
     created with a gap
-    :param alist: list
-    :param start: int
-    :param gap: int
+    Args:
+        alist: List to sort
+        start: Start index
+        gap:
     """
     for i in range(start+gap, len(alist), gap):
         current_val = alist[i]
         position = i
 
         while position >= gap and alist[position-gap] > current_val:
+            print(alist)
             alist[position] = alist[position-gap]
             position = position - gap
 
         alist[position] = current_val
-
+        print(alist)
 
 def shell_sort(alist):
     """
@@ -34,6 +36,6 @@ def shell_sort(alist):
 
         sublist_count = sublist_count // 2
 
-alist = [54,26,93,17,77,31,44,55,20]
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 shell_sort(alist)
 print(alist)
