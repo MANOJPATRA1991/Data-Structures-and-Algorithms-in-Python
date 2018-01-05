@@ -100,7 +100,7 @@ class AVLTree(BinarySearchTree):
         rotRoot.parent = newRoot
         rotRoot.balanceFactor = rotRoot.balanceFactor + \
             1 - min(newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = rotRoot.balanceFactor + \
+        newRoot.balanceFactor = newRoot.balanceFactor + \
             1 + max(rotRoot.balanceFactor, 0)
 
     def reBalance(self, node):
