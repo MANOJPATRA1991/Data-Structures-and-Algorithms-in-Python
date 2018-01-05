@@ -98,10 +98,10 @@ class AVLTree(BinarySearchTree):
                 rotRoot.parent.rightChild = newRoot
         newRoot.rightChild = rotRoot
         rotRoot.parent = newRoot
-        rotRoot.balanceFactor = rotRoot.balanceFactor + \
-            1 - min(newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = newRoot.balanceFactor + \
-            1 + max(rotRoot.balanceFactor, 0)
+        rotRoot.balanceFactor = rotRoot.balanceFactor - \
+            1 - max(newRoot.balanceFactor, 0)
+        newRoot.balanceFactor = newRoot.balanceFactor - \
+            1 - min(rotRoot.balanceFactor, 0)
 
     def reBalance(self, node):
         # Check if tree is right-heavy
