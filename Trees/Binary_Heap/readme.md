@@ -9,3 +9,5 @@
 5. `is_empty()` returns true if the heap is empty, false otherwise.
 6. `size()` returns the number of items in the heap.
 7. `build_heap(list)` builds a new heap from a list of keys.
+
+Enqueue and Dequeue is O(log n).
