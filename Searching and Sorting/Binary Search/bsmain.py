@@ -14,6 +14,7 @@ def binary_search(input_array, value):
     last = len(input_array) - 1
     
     while first <= last:
+        # Find the mid value
         mid = (first + last)//2
         # If item is the mid value of the list
         if input_array[mid] == value:
@@ -26,6 +27,7 @@ def binary_search(input_array, value):
         # search in the left half
         elif value < input_array[mid]:
             last = mid - 1
+            
     # Item not found
     return -1
 
