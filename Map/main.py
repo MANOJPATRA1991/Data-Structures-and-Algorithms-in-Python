@@ -1,7 +1,7 @@
 class HashTable(object):
     """
     Implements the map abstract data type
-    using Open Addressing
+    using Open Addressing with linear probing
     """
 
     def __init__(self):
@@ -36,9 +36,14 @@ class HashTable(object):
                         self.slots[next_slot] != key:
                     next_slot = self.rehash(next_slot, len(self.slots))
 
+                # If next slot is empty add key and 
+                # also add data in data list at same position
                 if self.slots[next_slot] is None:
                     self.slots[next_slot] = key
-
+                
+                # If next slot is not empty but 
+                # contains the same key as the one to be inserted
+                # simply, update the data in the same position in data list
                 self.data[next_slot] = data
 
     def get(self, key):
@@ -53,6 +58,7 @@ class HashTable(object):
         found = False
         # Keeps track of the position
         position = start_slot
+        
         while self.slots[position] is not None and \
                 not found and not stop:
             if self.slots[position] == key:
@@ -83,13 +89,12 @@ class HashTable(object):
             if self.slots[position] == key:
                 found = True
                 del self.slots[position]
-                data = self.data[position]
                 del self.data[position]
                 return
             else:
                 position = self.rehash(position, len(self.slots))
                 # If cycled through the slots and reached at the
-                # same position, stop the loop and return None as data is not found
+                # same position, stop the loop and exit
                 if position == start_slot:
                     stop = True
 
@@ -120,7 +125,7 @@ class HashTable(object):
 
     @staticmethod
     def rehash(old_hash, size):
-        # Skip slots by one
+        # Skip slots by one (linear probing)
         return (old_hash + 1) % size
 
 
