@@ -14,17 +14,19 @@ def binary_search(alist, item):
     if len(alist) == 0:
         return False
     else:
-        midpoint = len(alist)//2
+        # Find the mid value 
+        midpoint = len(alist) // 2
+        
         # If middle element is what we are searching for
         if alist[midpoint] == item:
             return True
         else:
             # If item is less than the middle element,
-            # do a binary search on the first half of the list
+            # do a binary search on the left half of the list
             if item < alist[midpoint]:
                 return binary_search(alist[:midpoint], item)
             # If item is greater than the middle element,
-            # do a binary search on the second half of the list
+            # do a binary search on the right half of the list
             else:
                 return binary_search(alist[midpoint + 1:], item)
 
