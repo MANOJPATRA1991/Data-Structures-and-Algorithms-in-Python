@@ -9,14 +9,19 @@ def sequential_search(alist, item):
     """
     # Keeps track of item's position
     pos = 0
+    # Keeps track of item's discovery
     found = False
 
+    # Keep running the while loop if item is not found 
+    # and pos is valid
     while pos < len(alist) and not found:
         if alist[pos] == item:
+            # Item found
             found = True
         else:
+            # Item not found => move to next position
             pos = pos + 1
-    # Item not found
+
     return found
 
 testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]
