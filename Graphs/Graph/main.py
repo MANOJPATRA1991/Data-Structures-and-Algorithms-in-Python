@@ -24,7 +24,8 @@ class Graph:
         """
         self.numVertices = self.numVertices + 1     # increment numVertices
         newVertex = Vertex(key)     # create a Vertex object with passed key
-        self.vertList[key] = newVertex      # add the new vertex to the vertList as value of the passed key of this Graph
+        # add the new vertex to the vertList as value of the passed key of this Graph
+        self.vertList[key] = newVertex
         return newVertex        # return the new vertex
 
     def getVertex(self, n):
@@ -95,6 +96,8 @@ if __name__ == "__main__":
     g = Graph()
     for i in range(6):
         g.addVertex(i)
+
+    print(g.vertList)
 
     g.addEdge(0, 1, 5)
     g.addEdge(0, 5, 2)

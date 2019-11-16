@@ -15,6 +15,7 @@ def insertion_sort(alist):
 
         alist[position] = current_value
 
+
 a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 insertion_sort(a_list)
 print(a_list)

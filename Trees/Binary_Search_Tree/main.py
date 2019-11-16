@@ -211,6 +211,14 @@ class BinarySearchTree(object):
 
 class TreeNode(object):
     def __init__(self, key, val, left=None, right=None, parent=None):
+        """
+
+        :param key: String
+        :param val: Any
+        :param left:
+        :param right:
+        :param parent:
+        """
         self.key = key
         self.payload = val
         self.leftChild = left

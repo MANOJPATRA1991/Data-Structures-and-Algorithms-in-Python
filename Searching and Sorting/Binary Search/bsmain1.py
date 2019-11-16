@@ -30,6 +30,7 @@ def binary_search(alist, item):
             else:
                 return binary_search(alist[midpoint + 1:], item)
 
+
 testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
 print(binary_search(testlist, 3))
 print(binary_search(testlist, 13))

@@ -81,16 +81,28 @@ def getRightChild(root):
 
 
 r = BinaryTree(3)
+print(r)
 insertLeft(r, 4)
+print(r)
 insertLeft(r, 5)
+print(r)
 insertRight(r, 6)
+print(r)
 insertRight(r, 7)
+print(r)
 
 left = getLeftChild(r)
-print(left)
+# print(left)
 
 setRootVal(left, 9)
-print(r)
+# print(r)
 insertLeft(left, 11)
-print(r)
-print(getRightChild(getRightChild(r)))
+# print(r)
+# print(getRightChild(getRightChild(r)))
+
+# OUTPUT:
+# [3, [], []]
+# [3, [4, [], []], []]
+# [3, [5, [4, [], []], []], []]
+# [3, [5, [4, [], []], []], [6, [], []]]
+# [3, [5, [4, [], []], []], [7, [], [6, [], []]]]

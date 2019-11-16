@@ -17,7 +17,9 @@ def buildGraph(wordFile):
     wfile = open(wordFile, 'r')
     # create bucket of words that differ by one letter
     for line in wfile:
+        print("LINE IS " + line)
         word = line[:-1]
+        print("WORD ID " + word)
         for i in range(len(word)):
             bucket = word[:i] + '_' + word[i+1:]
             if bucket in d:
@@ -26,6 +28,7 @@ def buildGraph(wordFile):
                 d[bucket] = [word]
     # add vertices and edges for words in the same bucket
     for bucket in d.keys():
+        print(bucket)
         for word1 in d[bucket]:
             for word2 in d[bucket]:
                 if word1 != word2:
@@ -97,6 +100,6 @@ def traverse(y):
     print(x.getId())
 
 
-gg = buildGraph(os.path.abspath("H:/Data_Structures_and_Algorithms_in_Python/Graphs/wordLadder.txt"))
+gg = buildGraph(os.path.abspath("C:/Users/Admin/Documents/Data-Structures-and-Algorithms-in-Python/Graphs/wordLadder.txt"))
 bfs(gg, gg.getVertex('fool'))
 traverse(gg.getVertex('sage'))

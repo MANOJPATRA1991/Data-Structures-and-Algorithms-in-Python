@@ -24,6 +24,7 @@ def sequential_search(alist, item):
 
     return found
 
+
 testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]
 print(sequential_search(testlist, 3))
 print(sequential_search(testlist, 13))

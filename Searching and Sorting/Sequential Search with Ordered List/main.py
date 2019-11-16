@@ -33,6 +33,7 @@ def ordered_sequential_search(alist, item):
 
     return found
 
+
 testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42]
 print(ordered_sequential_search(testlist, 3))
 print(ordered_sequential_search(testlist, 13))

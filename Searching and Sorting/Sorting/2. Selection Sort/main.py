@@ -12,6 +12,7 @@ def selection_sort(alist):
         alist[num], alist[max_pos] = \
             alist[max_pos], alist[num]
 
+
 a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
 selection_sort(a_list)
 print(a_list)

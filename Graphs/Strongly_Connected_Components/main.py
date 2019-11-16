@@ -43,7 +43,7 @@ for aVertex in g:
 
 # STEP 6: Call dfs on each vertex in the stack until the stack is empty
 print("The strongly connected components are: ")
-while not stk.isEmpty():
+while not stk.is_empty():
     v = stk.pop()
     if v.getColor() == 'white':
         g.dfs_visit(v, True)
