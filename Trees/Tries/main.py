@@ -39,16 +39,24 @@ class Trie:
         # Mark end of string
         crawl_pointer.isEndOfString = True
 
-    def search(self, key):
+    def search_prefix(self, key):
         crawl_pointer = self.root
         length = len(key)
         for level in range(length):
             alpha_index = Trie._char_to_alpha_index(key[level])
             if not crawl_pointer.links[alpha_index]:
-                return False
+                return None
             crawl_pointer = crawl_pointer.links[alpha_index]
 
-        return crawl_pointer is not None and crawl_pointer.isEndOfString
+        return crawl_pointer
+
+    def search(self, word):
+        node = self.search_prefix(word)
+        return node is not None and node.isEndOfString
+
+    def starts_with(self, prefix):
+        node = self.search_prefix(prefix)
+        return node is not None
 
 
 def main():
