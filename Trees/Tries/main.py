@@ -1,7 +1,7 @@
 class TrieNode:
     __R: int
-    __links: list
-    __isEndOfString: bool
+    links: list
+    isEndOfString: bool
 
     def __init__(self):
         self.__R = 26
