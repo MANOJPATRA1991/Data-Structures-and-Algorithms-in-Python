@@ -3,41 +3,41 @@ from Trees.Tree_Structure_Using_Classes import BinaryTree
 import operator
 
 
-def build_parse_tree(funcExp):
+def build_parse_tree(func_exp):
     """
     An application of post-order traversal
     Build a parse tree
     Args:
-        funcExp: function expression to build parse tree with
+        func_exp: function expression to build parse tree with
     Returns:
         A Binary tree
     """
-    funcExp = funcExp.split()
-    pStack = Stack()
-    etree = BinaryTree('')
-    pStack.push(etree)
-    currentTree = etree
+    func_exp = func_exp.split()
+    p_stack = Stack()
+    e_tree = BinaryTree('')
+    p_stack.push(e_tree)
+    current_tree = e_tree
 
-    for i in funcExp:
+    for i in func_exp:
         if i == '(':
-            currentTree.insertLeft('')
-            pStack.push(currentTree)
-            currentTree = currentTree.getLeftChild()
+            current_tree.insert_left('')
+            p_stack.push(current_tree)
+            current_tree = current_tree.getLeftChild()
         elif i not in ['+', '-', '*', '/', ')']:
-            currentTree.setRootVal(int(i))
-            parent = pStack.pop()
-            currentTree = parent
+            current_tree.set_root_val(int(i))
+            parent = p_stack.pop()
+            current_tree = parent
         elif i in ['+', '-', '*', '/']:
-            currentTree.setRootVal(i)
-            currentTree.insertRight('')
-            pStack.push(currentTree)
-            currentTree = currentTree.getRightChild()
+            current_tree.set_root_val(i)
+            current_tree.insert_right('')
+            p_stack.push(current_tree)
+            current_tree = current_tree.getRightChild()
         elif i == ')':
-            currentTree = pStack.pop()
+            current_tree = p_stack.pop()
         else:
             raise ValueError
 
-    return etree
+    return e_tree
 
 
 def evaluate(parse_tree):
@@ -56,17 +56,17 @@ def evaluate(parse_tree):
 
     if parse_tree:
         # evaluate left sub tree
-        leftC = evaluate(parse_tree.getLeftChild())
+        leftC = evaluate(parse_tree.get_left_child())
         # evaluate right sub tree
-        rightC = evaluate(parse_tree.getRightChild())
+        rightC = evaluate(parse_tree.get_right_child())
         # if left and right subtree exist, calculate and return
         # final result
         if leftC and rightC:
-            fn = opers[parse_tree.getRootVal()]
+            fn = opers[parse_tree.get_root_val()]
             return fn(leftC, rightC)
         # return final result
         else:
-            return parse_tree.getRootVal()
+            return parse_tree.get_root_val()
 
 
 def print_exp(parse_tree):
@@ -79,9 +79,9 @@ def print_exp(parse_tree):
     """
     sval = ""
     if parse_tree:
-        sval = print_exp(parse_tree.getLeftChild())
-        sval = sval + str(parse_tree.getRootVal())
-        sval = sval + print_exp(parse_tree.getRightChild())
+        sval = print_exp(parse_tree.get_left_child())
+        sval = sval + str(parse_tree.get_root_val())
+        sval = sval + print_exp(parse_tree.get_right_child())
     return sval
 
 

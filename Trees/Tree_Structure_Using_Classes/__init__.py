@@ -12,51 +12,51 @@ class BinaryTree:
         self.leftChild = None
         self.rightChild = None
 
-    def insertLeft(self, newNode):
+    def insert_left(self, new_node):
         """
         Inserts a new node as the left child of the root
         Args:
-            newNode(any): The value to insert
+            new_node(any): The value to insert
         """
         if self.leftChild is None:
-            self.leftChild = BinaryTree(newNode)
+            self.leftChild = BinaryTree(new_node)
         else:
-            t = BinaryTree(newNode)
+            t = BinaryTree(new_node)
             t.leftChild = self.leftChild
             self.leftChild = t
 
-    def insertRight(self, newNode):
+    def insert_right(self, new_node):
         """
         Inserts a new node as the right child of the root
         Args:
-            newNode(any): The value to insert
+            new_node(any): The value to insert
         """
         if self.rightChild is None:
-            self.rightChild = BinaryTree(newNode)
+            self.rightChild = BinaryTree(new_node)
         else:
-            t = BinaryTree(newNode)
+            t = BinaryTree(new_node)
             t.rightChild = self.rightChild
             self.rightChild = t
 
-    def getRightChild(self):
+    def get_right_child(self):
         """
         Get the right child of the root
         """
         return self.rightChild
 
-    def getLeftChild(self):
+    def get_left_child(self):
         """
         Get the left child of the root
         """
         return self.leftChild
 
-    def setRootVal(self, obj):
+    def set_root_val(self, obj):
         """
         Set new value for the root
         """
         self.key = obj
 
-    def getRootVal(self):
+    def get_root_val(self):
         """
         Get the value of the root
         """
@@ -64,13 +64,13 @@ class BinaryTree:
 
 
 # r = BinaryTree('a')
-# print(r.getRootVal())
-# print(r.getLeftChild())
-# r.insertLeft('b')
-# print(r.getLeftChild())
-# print(r.getLeftChild().getRootVal())
-# r.insertRight('c')
-# print(r.getRightChild())
-# print(r.getRightChild().getRootVal())
-# r.getRightChild().setRootVal('hello')
-# print(r.getRightChild().getRootVal())
+# print(r.get_root_val())
+# print(r.get_left_child())
+# r.insert_left('b')
+# print(r.get_left_child())
+# print(r.get_left_child().get_root_val())
+# r.insert_right('c')
+# print(r.get_right_child())
+# print(r.get_right_child().get_root_val())
+# r.get_right_child().set_root_val('hello')
+# print(r.get_right_child().get_root_val())

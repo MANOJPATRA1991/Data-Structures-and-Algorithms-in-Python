@@ -1,8 +1,4 @@
 class TrieNode:
-    __R: int
-    links: list
-    isEndOfString: bool
-
     def __init__(self):
         self.__R = 26
         self.links = [None] * self.__R

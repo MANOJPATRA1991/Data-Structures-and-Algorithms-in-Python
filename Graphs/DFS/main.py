@@ -20,11 +20,11 @@ class DFSGraph(Graph):
         """
         Starts the depth first search
         """
-        # Run time => O(V) for both the loops
+        # Run time => O(V)
         for aVertex in self:
             aVertex.setColor('white')
             aVertex.setPredecessor(-1)
-
+        # Run time => O(V)
         for aVertex in self:
             if aVertex.getColor() == 'white':
                 self.dfs_visit(aVertex)
@@ -36,7 +36,6 @@ class DFSGraph(Graph):
             p(bool): Print value if True (used in case of
                     finding strongly connected components)
         """
-        # Run-time => O(E) for the for loop
         #
         # as the loop will execute a max of once for every edge
         #
@@ -46,11 +45,14 @@ class DFSGraph(Graph):
         #     all the children of a particular node in the
         #     depth first tree have a later discovery time
         #     and an earlier finish time than their parent
-        start_vertex.setColor('gray')
+        start_vertex.setColor('gray') # In the process of being visited
         if p:
             print(start_vertex.id)
         start_vertex.setDiscovery(self.time)
         self.time += 1
+        # Start visiting all vertices
+        # connected to start_vertex
+        # Run-time => O(E)
         for v in start_vertex.getConnections():
             if v.getColor() == 'white':
                 v.setPredecessor(start_vertex)
@@ -58,6 +60,7 @@ class DFSGraph(Graph):
                     self.dfs_visit(v, True)
                 else:
                     self.dfs_visit(v)
+        # Mark as visited
         start_vertex.setColor('black')
         self.time += 1
         start_vertex.setFinish(self.time)

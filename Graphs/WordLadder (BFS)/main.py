@@ -3,6 +3,15 @@ from Queues.queue import Queue
 
 import os
 
+# BFS
+# The remarkable thing about a breadth first search is that
+# it finds all the vertices that are a distance k from s
+# before it finds any vertices that are a distance k+1.
+
+# One good way to visualize what the breadth first search algorithm does
+# is to imagine that it is building a tree, one level of the tree at a time.
+# A breadth first search adds all children of the starting vertex before
+# it begins to discover any of the grandchildren.
 
 def buildGraph(wordFile):
     """
@@ -17,28 +26,21 @@ def buildGraph(wordFile):
     wfile = open(wordFile, 'r')
     # create bucket of words that differ by one letter
     for line in wfile:
-        print("LINE IS " + line)
         word = line[:-1]
-        print("WORD ID " + word)
         for i in range(len(word)):
             bucket = word[:i] + '_' + word[i+1:]
             if bucket in d:
                 d[bucket].append(word)
             else:
                 d[bucket] = [word]
+
+    print(d)
     # add vertices and edges for words in the same bucket
     for bucket in d.keys():
-        print(bucket)
         for word1 in d[bucket]:
             for word2 in d[bucket]:
                 if word1 != word2:
                     g.addEdge(word1, word2)
-
-    # print(g)
-    # for v in g:
-    #     for w in v.getConnections():
-    #         print("( %s, %s )" % (v.getId(), w.getId()))
-
     return g
 
 
@@ -66,25 +68,26 @@ def bfs(g, start):
     vertQueue.enqueue(start)
     # do until all the vertices in the graph
     # have color 'black', i.e., completely explored
+    # while loop is executed at most once
+    # for each vertex in the Graph, i.e., Run time => O(V)
     while vertQueue.size() > 0:     # while queue is not empty
-    #
-    # while loop is executed at most once for each vertex in the Graph => O(V)
-    #
-        currentVert = vertQueue.dequeue()      # remove first element
-        for nbr in currentVert.getConnections():       # get connected vertices for  currentVert
-        #
-        # for loop is executed once for each edge in the Graph after a Vertex is dequeued at most once => O(E)
-        #
+        current_vert = vertQueue.dequeue()      # remove first element
+        # for loop is executed once for each edge in the Graph
+        # after a Vertex is dequeued at most once, i.e., Run time => O(E)
+        for nbr in current_vert.getConnections():       # get connected vertices for  current_vert
             if nbr.getColor() == "white":      # if unexplored
                 nbr.setColor("gray")       # set color of vertex to gray
-                nbr.setDistance(currentVert.getDistance() + 1)      # increment distance
-                nbr.setPredecessor(currentVert)     # set predecessor to currentVert
-                vertQueue.enqueue(nbr)      # enqueue neighbor to queue
-        currentVert.setColor("black")       # set current vertex color to black as it is now completely explored
-    #
-    # Combining the two loops => O(V + E)
-    #
-    # Following the links from the starting node to the goal node is O(V) in worst-case if the graph was a single long chain.
+                nbr.setDistance(current_vert.getDistance() + 1)      # increment distance
+                nbr.setPredecessor(current_vert)     # set predecessor to currentVert
+                vertQueue.enqueue(nbr)      # enqueue neighbor to queue (BREADTH FIRST)
+        # set current vertex color to black as it is now completely explored
+        current_vert.setColor("black")
+
+    # Combining the two loops, Run time => O(V + E)
+
+    # Following the links from the starting node to the goal node is O(V) in worst-case
+    # if the graph was a single long chain.
+
     # Normally it would be a fraction of O(V) still = O(V)
 
 def traverse(y):

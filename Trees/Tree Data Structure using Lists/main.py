@@ -98,7 +98,7 @@ setRootVal(left, 9)
 # print(r)
 insertLeft(left, 11)
 # print(r)
-# print(getRightChild(getRightChild(r)))
+# print(get_right_child(get_right_child(r)))
 
 # OUTPUT:
 # [3, [], []]

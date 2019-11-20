@@ -28,7 +28,7 @@ class BinHeap:
             if self.heap_list[i] < self.heap_list[i // 2]:
                 self.heap_list[i // 2], self.heap_list[i] = \
                     self.heap_list[i], self.heap_list[i // 2]
-                i = i // 2
+            i = i // 2
 
     def insert(self, k):
         """
@@ -118,12 +118,14 @@ class BinHeap:
             # Percolate down until all max values have moved down
             self.perc_down(i)
             i = i - 1
+        print(self.heap_list)
+
 
 bh = BinHeap()
 bh.build_heap([9, 5, 6, 2, 3])
-
 print(bh.del_min())
 print(bh.del_min())
 print(bh.del_min())
 print(bh.del_min())
 print(bh.del_min())
+# print(bh.del_min())

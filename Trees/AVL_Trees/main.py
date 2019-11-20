@@ -9,37 +9,37 @@ class AVLTree(BinarySearchTree):
         # If key is less than the current node, it should go in left side
         if key < currentNode.key:
             
-            # If current node has left child, the new node should go in the left tree
-            if currentNode.hasLeftChild():
+            # If current node has left child, the new node should go in the left subtree
+            if currentNode.has_left_child():
                 self._put(key, val, currentNode.leftChild)    
             else:
                 # Otherwise the new node is the left child of the current node
                 currentNode.leftChild = TreeNode(key, val, parent=currentNode)
                 
                 # Update balance factor of current node and its ancestors as required
-                self.updateBalance(currentNode.leftChild)
+                self.update_balance(currentNode.leftChild)
                 
         # If key is greater than the current node, it should go in right side        
         else:
             
-            # If current node has right child, the new node should go in the right tree
-            if currentNode.hasRightChild():
+            # If current node has right child, the new node should go in the right subtree
+            if currentNode.has_right_child():
                 self._put(key, val, currentNode.rightChild)
             else:
                 # Otherwise the new node is the right child of the current node
                 currentNode.rightChild = TreeNode(key, val, parent=currentNode)
                 
                 # Update balance factor of current node and its ancestors as required
-                self.updateBalance(currentNode.rightChild)
+                self.update_balance(currentNode.rightChild)
 
-    def updateBalance(self, node):
+    def update_balance(self, node):
         """
         Update balance factors of all nodes as required
         A node is said to be balanced if it has a balance factor of either 1, -1 or 0
         """
-        # If the current node is out of balance, rebalance it and return
+        # If the current node is out of balance, re-balance it and return
         if node.balanceFactor > 1 or node.balanceFactor < -1:
-            self.reBalance(node)
+            self.re_balance(node)
             return
         
         # If current node is balanced, update balance factor of parent
@@ -47,77 +47,77 @@ class AVLTree(BinarySearchTree):
             
             # If current node is the left child,
             # increment it's parent's balance factor by 1
-            if node.isLeftChild():
+            if node.is_left_child():
                 node.parent.balanceFactor = node.parent.balanceFactor + 1
                 
             # If current node is the right child,
             # decrement it's parent's balance factor by 1    
-            elif node.isRightChild():
+            elif node.is_right_child():
                 node.parent.balanceFactor = node.parent.balanceFactor - 1
                 
             # If balance factor of parent after update is not zero,
-            # call updateBalance on the parent
+            # call update_balance on the parent
             if node.parent.balanceFactor != 0:
-                self.updateBalance(node.parent)
+                self.update_balance(node.parent)
 
-    def rotateLeft(self, rotRoot):
+    def rotate_left(self, rot_root):
         """
         Rotate tree left
         """
-        newRoot = rotRoot.rightChild
-        rotRoot.rightChild = newRoot.leftChild
-        if newRoot.leftChild is not None:
-            newRoot.leftChild.parent = rotRoot
-        newRoot.parent = rotRoot.parent
-        if rotRoot.isRoot():
-            self.root = newRoot
+        new_root = rot_root.rightChild
+        rot_root.rightChild = new_root.leftChild
+        if new_root.leftChild is not None:
+            new_root.leftChild.parent = rot_root
+        new_root.parent = rot_root.parent
+        if rot_root.is_root():
+            self.root = new_root
         else:
-            if rotRoot.isLeftChild():
-                rotRoot.parent.leftChild = newRoot
+            if rot_root.is_left_child():
+                rot_root.parent.leftChild = new_root
             else:
-                rotRoot.parent.rightChild = newRoot
-        newRoot.leftChild = rotRoot
-        rotRoot.parent = newRoot
-        rotRoot.balanceFactor = rotRoot.balanceFactor + \
-            1 - min(newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = newRoot.balanceFactor + \
-            1 + max(rotRoot.balanceFactor, 0)
+                rot_root.parent.rightChild = new_root
+        new_root.leftChild = rot_root
+        rot_root.parent = new_root
+        rot_root.balanceFactor = rot_root.balanceFactor + \
+                                 1 - min(new_root.balanceFactor, 0)
+        new_root.balanceFactor = new_root.balanceFactor + \
+            1 + max(rot_root.balanceFactor, 0)
 
-    def rotateRight(self, rotRoot):
-        newRoot = rotRoot.leftChild
-        rotRoot.leftChild = newRoot.rightChild
-        if newRoot.rightChild is not None:
-            newRoot.rightChild.parent = rotRoot
-        newRoot.parent = rotRoot.parent
-        if rotRoot.isRoot():
-            self.root = newRoot
+    def rotate_right(self, rot_root):
+        new_root = rot_root.leftChild
+        rot_root.leftChild = new_root.rightChild
+        if new_root.rightChild is not None:
+            new_root.rightChild.parent = rot_root
+        new_root.parent = rot_root.parent
+        if rot_root.is_root():
+            self.root = new_root
         else:
-            if rotRoot.isLeftChild():
-                rotRoot.parent.leftChild = newRoot
+            if rot_root.is_left_child():
+                rot_root.parent.leftChild = new_root
             else:
-                rotRoot.parent.rightChild = newRoot
-        newRoot.rightChild = rotRoot
-        rotRoot.parent = newRoot
-        rotRoot.balanceFactor = rotRoot.balanceFactor - \
-            1 - max(newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = newRoot.balanceFactor - \
-            1 - min(rotRoot.balanceFactor, 0)
+                rot_root.parent.rightChild = new_root
+        new_root.rightChild = rot_root
+        rot_root.parent = new_root
+        rot_root.balanceFactor = rot_root.balanceFactor - \
+                                 1 - max(new_root.balanceFactor, 0)
+        new_root.balanceFactor = new_root.balanceFactor - \
+            1 - min(rot_root.balanceFactor, 0)
 
-    def reBalance(self, node):
+    def re_balance(self, node):
         # Check if tree is right-heavy
         if node.balanceFactor < 0:
             
             # Check if right child is left-heavy
             if node.rightChild.balanceFactor > 0:
                 # 1. Rotate node's right tree to right
-                self.rotateRight(node.rightChild)
+                self.rotate_right(node.rightChild)
                 # 2. Rotate tree with current node as root to left
-                self.rotateLeft(node)
+                self.rotate_left(node)
                 
-            # If right child is not left-heavy    
+            # If right child is right-heavy
             else:
                 # 1. Rotate tree with current node as root to left 
-                self.rotateLeft(node)
+                self.rotate_left(node)
         
         # Check if tree is left-heavy
         elif node.balanceFactor > 0:
@@ -125,11 +125,11 @@ class AVLTree(BinarySearchTree):
             # Check if left child is right-heavy
             if node.leftChild.balanceFactor < 0:
                 # 1. Rotate node's left tree to left
-                self.rotateLeft(node.leftChild)
+                self.rotate_left(node.leftChild)
                 # 2. Rotate tree with current node as root to right
-                self.rotateRight(node)
+                self.rotate_right(node)
             
-            # If left child is not right-heavy
+            # If left child is left-heavy
             else:
                 # 1. Rotate tree with current node as root to right
-                self.rotateRight(node)
+                self.rotate_right(node)

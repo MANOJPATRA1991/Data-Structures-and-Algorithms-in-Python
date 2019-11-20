@@ -37,16 +37,14 @@ class PriorityQueue:
         self.heap_list = [(0, 0)]
         for i in alist:
             self.heap_list.append(i)
-        i = len(alist) // 2
-        while i > 0:
+        mid = len(alist) // 2
+        while mid > 0:
             # Percolate down until all max values have moved down
-            self.perc_down(i)
-            i = i - 1
+            self.perc_down(mid)
+            mid = mid - 1
 
-    #
     #   perc_down, min_child and build_heap are used to create a heap from a
     #   given list of elements
-    #
 
     def perc_down(self, i):
         """
@@ -59,16 +57,17 @@ class PriorityQueue:
         # Check if left child exists for current value of i
         while (i * 2) <= self.current_size:
             # Find the index of minimum valued child
-            mc = self.min_child(i)
+            min_child_index = self.get_min_child_index(i)
             # Swap if parent value is greater than
             # minimum child's value
-            if self.heap_list[i][0] > self.heap_list[mc][0]:
-                self.heap_list[i], self.heap_list[mc] = \
-                    self.heap_list[mc], self.heap_list[i]
-                # Make minimum child's index the next value of i
-            i = mc
+            if self.heap_list[i][0] > self.heap_list[min_child_index][0]:
+                self.heap_list[i], self.heap_list[min_child_index] = \
+                    self.heap_list[min_child_index], self.heap_list[i]
+            # Make minimum child's index the next value of i
+            # Move down the graph and continue
+            i = min_child_index
 
-    def min_child(self, i):
+    def get_min_child_index(self, i):
         """
         Get the minimum valued child of an element
         Args:
@@ -76,22 +75,23 @@ class PriorityQueue:
         Returns:
             Index of child with minimum value
         """
-        # If right child doesn't exist return left child
+        # If left child doesn't exist return -1
         if i * 2 > self.current_size:
             return -1
         else:
+            # If right child doesn't exist but left child does,
+            # return left child's index
             if i * 2 + 1 > self.current_size:
                 return i * 2
             else:
+                # If both children exist, return index of minimum of both
                 if self.heap_list[i * 2][0] < self.heap_list[i * 2 + 1][0]:
                     return i * 2
                 else:
                     return i * 2 + 1
 
-    #
     #   perc_up, insert are used to create a heap
     #   taking a single item at a time
-    #
 
     def perc_up(self, i):
         """
@@ -105,6 +105,7 @@ class PriorityQueue:
             if self.heap_list[i][0] < self.heap_list[i // 2][0]:
                 self.heap_list[i], self.heap_list[i // 2] = \
                     self.heap_list[i // 2], self.heap_list[i]
+            # Move up a level in the graph and continue
             i = i // 2
 
     def insert(self, k):
@@ -149,16 +150,17 @@ class PriorityQueue:
         """
         done = False
         i = 1
-        myKey = 0
+        my_key = 0
         while not done and i <= self.current_size:
             if self.heap_list[i][1] == vertex:
                 done = True
-                myKey = i
+                my_key = i
             else:
                 i = i + 1
-        if myKey > 0:
-            self.heap_list[myKey] = (new_dist, self.heap_list[myKey][1])
-            self.perc_up(myKey)
+        if my_key > 0:
+            self.heap_list[my_key] = (new_dist, self.heap_list[my_key][1])
+            # As value is reduced, we need to percolate up
+            self.perc_up(my_key)
 
     def __contains__(self, vtx):
         for pair in self.heap_list:
