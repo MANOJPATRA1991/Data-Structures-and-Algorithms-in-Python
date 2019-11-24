@@ -1,22 +1,27 @@
 from Deque.deque import Deque
 
+# Palindrome: a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam or nurses run
+# s.replace(" ", "")
+# s.strip(), s.lstrip(), s.rstrip()
+
 
 def pal_checker(str):
-    chardeque = Deque()
+    char_deque = Deque()
 
     for ch in str:
-        chardeque.add_rear(ch)
+        char_deque.add_rear(ch)
 
-    stillEqual = True
+    still_equal = True
 
-    while chardeque.size() > 1 and stillEqual:
-        first = chardeque.remove_front()
-        last = chardeque.remove_rear()
+    while char_deque.size() > 1 and still_equal:
+        first = char_deque.remove_front()
+        last = char_deque.remove_rear()
 
         if first != last:
-            stillEqual = False
+            still_equal = False
 
-    return  stillEqual
+    return still_equal
+
 
 print(pal_checker("ladkjfs"))
 print(pal_checker("radar"))

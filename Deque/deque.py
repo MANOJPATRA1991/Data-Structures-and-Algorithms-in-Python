@@ -1,10 +1,12 @@
-#adding and removing from the front is O(1)
-#adding and removing from the rear in O(n)
+# Adding and removing from the front is O(1)
+# Adding and removing from the rear is O(n)
 
 
 class Deque:
-    """Creates a double-ended queue assuming the rear of the deque is at
-    position 0 in the list"""
+    """
+    Creates a double-ended queue assuming the rear of the deque is at
+    position 0 in the list
+    """
     def __init__(self):
         self.items = []
 

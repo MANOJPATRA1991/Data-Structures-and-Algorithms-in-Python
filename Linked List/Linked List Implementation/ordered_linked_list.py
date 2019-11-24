@@ -36,7 +36,7 @@ class OrderedLinkedList(object):
             Returns:
                 A Boolean indicating if the list is empty or not
         """
-        return self.head == None
+        return self.head is None
 
     def get_position(self, position):
         """Returns the element at the position specified

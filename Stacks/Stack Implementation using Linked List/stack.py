@@ -4,7 +4,8 @@ class Element(object):
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
+
 class LinkedList(object):
     """This class can be used to create a linked list"""
     def __init__(self, head=None):
@@ -43,6 +44,7 @@ class LinkedList(object):
             current.next = None
         return current
         pass
+
 
 class Stack(object):
     """Create an instance of class Stack"""

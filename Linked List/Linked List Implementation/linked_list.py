@@ -1,7 +1,9 @@
 
 class Element(object):
-    """This class creates elements that can be inserted into a
-        LinkedList instance"""
+    """
+    This class creates elements that can be inserted into a
+    LinkedList instance
+    """
 
     def __init__(self, value):
         self.value = value
@@ -9,16 +11,19 @@ class Element(object):
 
 
 class LinkedList(object):
-    """This class can be used to create a Linked List"""
+    """
+    This class can be used to create a Linked List
+    """
 
     def __init__(self, head=None):
         self.head = head
 
     def append(self, new_element):
-        """Appends a new element to the linked list
+        """
+        Appends a new element to the linked list
 
-            Args:
-                new_element: An Element instance
+        Args:
+            new_element: An Element instance
         """
         current = self.head
         if self.head:
@@ -30,29 +35,32 @@ class LinkedList(object):
             self.head = new_element
 
     def is_empty(self):
-        """Checks if the linked list is empty
+        """
+        Checks if the linked list is empty
 
-            Returns:
-                A Boolean indicating if the list is empty or not
+        Returns:
+            A Boolean indicating if the list is empty or not
         """
         return self.head is None
 
     def get_position(self, position):
-        """Returns the element at the position specified
+        """
+        Returns the element at the position specified
 
-            Args:
-                position: A number specifying position at which
-                element is to be returned
+        Args:
+            position: A number specifying position at which
+            element is to be returned
 
-            Returns:
-                An Element instance at the specified position
-                within the Linked list
+        Returns:
+            An Element instance at the specified position
+            within the Linked list
         """
         counter = 1
         current = self.head
         if position < 1:
             return None
         while current and counter <= position:
+            # Base case
             if counter == position:
                 return current
             current = current.next
@@ -60,12 +68,15 @@ class LinkedList(object):
         return None
 
     def search(self, item):
-        """search for an item in the linked list
+        """
+        Search for an item in the linked list
+
         Args:
             item: An Element instance
 
         Returns:
-            A Boolean"""
+            A Boolean
+        """
         current = self.head
         while current:
             if current.value == item:
@@ -122,7 +133,8 @@ class LinkedList(object):
             current.next = None
 
     def pop(self):
-        """removes the last element from the linked list
+        """
+        Removes the last element from the linked list
 
         Returns:
             An Element instance

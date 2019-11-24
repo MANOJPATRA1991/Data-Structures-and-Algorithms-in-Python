@@ -68,8 +68,8 @@ def partition(alist, first, last):
         # If right marked value is greater than
         # pivot value and left mark is to the
         # left of right mark, move backwards
-        while alist[right_mark] >= pivot_value and \
-                right_mark >= left_mark:
+        while right_mark >= left_mark and \
+                alist[right_mark] >= pivot_value:
 
             right_mark = right_mark - 1
 

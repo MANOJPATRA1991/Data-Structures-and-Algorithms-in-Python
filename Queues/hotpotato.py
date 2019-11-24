@@ -1,16 +1,17 @@
 from Queues.queue import Queue
 
-def hotPotato(namelist, num):
-    simQueue=Queue()
+
+def hot_potato(namelist, num):
+    sim_queue=Queue()
     for name in namelist:
-        simQueue.enqueue(name)
+        sim_queue.enqueue(name)
 
-    while simQueue.size() > 1:
+    while sim_queue.size() > 1:
         for i in range(num):
-            simQueue.enqueue(simQueue.dequeue())
+            sim_queue.enqueue(sim_queue.dequeue())
 
-        simQueue.dequeue()
+        sim_queue.dequeue()
 
-    return simQueue.dequeue()
+    return sim_queue.dequeue()
 
-print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
+print(hot_potato(["Bill", "David", "Susan", "Jane", "Kent", "Brad"], 7))
